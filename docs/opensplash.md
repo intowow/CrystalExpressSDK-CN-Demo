@@ -55,7 +55,7 @@ mAd = I2WAPI.requesSingleOfferAD(this, "OPEN_SPLASH");
 
 <p/>[程式範例][OpenSplash-setListener]<p/>
 
-- 有別於[插頁蓋屏(Interstitial Splash)](../interstitial.md)，此步驟(`setListener()`)為`Blocking calls`
+- 有別於[插頁蓋屏(Interstitial Splash)](./interstitial)，此步驟(`setListener()`)為`Blocking calls`
 
 <codetag tag="OpenSplash-setListener"/>
 ```java

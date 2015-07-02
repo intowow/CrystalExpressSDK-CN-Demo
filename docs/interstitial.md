@@ -26,7 +26,7 @@ mInterstitialSplashAd = I2WAPI.requesSplashAD(CEStreamActivity.this, mInterstiti
 <p/>
 
 - 設定listener ([程式範例][Interstitial-setListener])
-- 有別於[開機蓋屏(Open Splash)](../opensplash.md)，此步驟(`setListener()`)為`Non-Blocking calls`
+- 有別於[開機蓋屏(Open Splash)](./opensplash)，此步驟(`setListener()`)為`Non-Blocking calls`
 
 <codetag tag="Interstitial-setListener"/>
 ```java
