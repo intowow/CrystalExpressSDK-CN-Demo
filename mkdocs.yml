@@ -1,0 +1,19 @@
+﻿site_name: CrystalExpressSDK-CN-Doc
+pages:
+- 首頁: 'index.md'
+- '修改紀錄': 'changelog.md'
+- '名詞解釋': 'naming.md'
+- '整合前準備': 'before.md'
+- 'AndroidManifest.xml設定': 'androidmanifest.md'
+- 'Activity設定': 'activity_setting.md'
+- '廣告版位':
+    - '開機蓋屏(Open Splash)': 'opensplash.md'
+    - '插頁蓋屏(Interstitial Splash)': 'interstitial.md'
+    - '翻頁蓋屏(Flip Splash)': 'flip.md'
+    - '信息流廣告(Stream Ad)': 'stream.md'
+    - '內文廣告(Content Ad)': 'content.md'
+- 'Proguard': 'proguard.md'
+- '預覽模式': 'preview.md'
+- '廣告曝光與點擊回調機制': 'adevent.md'
+- 'API': 'api.md'
+theme: readthedocs
