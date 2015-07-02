@@ -7,7 +7,7 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center">1.0</td><td>2015/06/30</td><td>Daniel</td><td>文件初版</td>
+			<td align="center">1.0</td><td>2015/07/02</td><td>Daniel</td><td>文件初版</td>
 		</tr>
 	</tbody>
 </table>

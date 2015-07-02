@@ -126,10 +126,10 @@ public void onConfigurationChanged(Configuration newConfig) {
 	- 在activity裡加上android:configChanges="orientation|screenSize"
 
 
-[OpenSplash-onConfigurationChanged]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L29 "CEOpenSplashActivity.java" 
-[OpenSplash-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L83 "CEOpenSplashActivity.java" 
-[OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L78 "CEOpenSplashActivity.java" 
-[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
-[OpenSplash-mAd]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L25 "CEOpenSplashActivity.java" 
-[OpenSplash-BackgroundTask]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/opensplash/OpenSplashActivity.java#L58 "OpenSplashActivity.java" 
-[OpenSplash]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L14 "CEOpenSplashActivity.java" 
+[OpenSplash-onConfigurationChanged]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L29 "CEOpenSplashActivity.java" 
+[OpenSplash-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L83 "CEOpenSplashActivity.java" 
+[OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L78 "CEOpenSplashActivity.java" 
+[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
+[OpenSplash-mAd]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L25 "CEOpenSplashActivity.java" 
+[OpenSplash-BackgroundTask]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/opensplash/OpenSplashActivity.java#L58 "OpenSplashActivity.java" 
+[OpenSplash]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L14 "CEOpenSplashActivity.java" 

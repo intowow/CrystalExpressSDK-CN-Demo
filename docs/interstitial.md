@@ -65,9 +65,9 @@ if (mInterstitialSplashAd != null) {
 ```
 <p/>
 
-[Interstitial-release]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L364 "CEStreamActivity.java" 
-[OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L78 "CEOpenSplashActivity.java" 
-[Interstitial]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L334 "CEStreamActivity.java" 
-[Interstitial-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L91 "CEStreamActivity.java" 
-[Interstitial-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L153 "CEStreamActivity.java" 
-[Interstitial-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L157 "CEStreamActivity.java" 
+[Interstitial-release]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L364 "CEStreamActivity.java" 
+[OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L78 "CEOpenSplashActivity.java" 
+[Interstitial]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L334 "CEStreamActivity.java" 
+[Interstitial-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L91 "CEStreamActivity.java" 
+[Interstitial-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L153 "CEStreamActivity.java" 
+[Interstitial-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L157 "CEStreamActivity.java" 

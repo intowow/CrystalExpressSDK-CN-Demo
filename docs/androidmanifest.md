@@ -39,4 +39,4 @@
 <meta-data android:name="CRYSTAL_ID" android:value="申請的CRYSTAL_ID" />
 ```
 
-[TAG-AndroidManifest]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/AndroidManifest.xml "AndroidManifest.xml"
+[TAG-AndroidManifest]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/AndroidManifest.xml "AndroidManifest.xml"

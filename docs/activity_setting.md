@@ -77,7 +77,7 @@ public void onPause() {
 - 若是APP有整合[開機蓋屏(Open Splash)廣告](./opensplash)，請將此API加至[onStart()][I2WAPI-onStart]與[onStop()][I2WAPI-onStop]裡
 
 
-[I2WAPI-onStart]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L70 "CEOpenSplashActivity.java" 
-[I2WAPI-onStop]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L148 "CEOpenSplashActivity.java" 
-[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
-[BaseActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN/blob/master/CrystalExpressDemo/src/com/intowow/crystalexpress/cedemo/BaseActivity.java#L11 "BaseActivity.java" 
+[I2WAPI-onStart]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L70 "CEOpenSplashActivity.java" 
+[I2WAPI-onStop]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L148 "CEOpenSplashActivity.java" 
+[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
+[BaseActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/BaseActivity.java#L11 "BaseActivity.java" 
