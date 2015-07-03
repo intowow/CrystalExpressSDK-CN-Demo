@@ -1,8 +1,8 @@
-﻿﻿﻿<h3 id='androidmanifest' style='color:red'>AndroidManifest.xml設定</h3>
+﻿﻿﻿<h3 id='androidmanifest' style='color:red'>AndroidManifest.xml</h3>
 
-[XML範例][TAG-AndroidManifest]
+[XML設定範例][TAG-AndroidManifest]
 
-<h4 id='Permission' style='color:green'>設定Permission</h4>
+<h4 id='Permission' style='color:green'>Permission</h4>
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +11,7 @@
 <uses-permission android:name="android.permission.SET_ORIENTATION" />
 ```
 
-<h4 id='Activity' style='color:green'>新增Activity</h4>
+<h4 id='Activity' style='color:green'>Activity</h4>
 
 ```xml
 <activity
@@ -23,7 +23,7 @@
 </activity>
 ```
 
-<h4 id='Receiver' style='color:green'>新增Receiver</h4>
+<h4 id='Receiver' style='color:green'>Receiver</h4>
 
 ```xml
 <receiver android:name="com.intowow.sdk.ScheduleReceiver">
@@ -33,10 +33,10 @@
 </receiver>
 ```
 
-<h4 id='meta-data' style='color:green'>新增meta-data</h4>
+<h4 id='meta-data' style='color:green'>Meta-Data</h4>
 
 ```xml
-<meta-data android:name="CRYSTAL_ID" android:value="申請的CRYSTAL_ID" />
+<meta-data android:name="CRYSTAL_ID" android:value="Intowow提供的CRYSTAL_ID" />
 ```
 
 [TAG-AndroidManifest]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/AndroidManifest.xml "AndroidManifest.xml"

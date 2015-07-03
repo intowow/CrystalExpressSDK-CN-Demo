@@ -1,6 +1,6 @@
-﻿<h3 id='proguard' style='color:red'>Proguard</h2>
+﻿<h3 id='proguard' style='color:red'>程式碼混淆</h2>
 
-如果APP有使用proguard，請在proguard的設定檔裡加上
+如果應用程式有使用程式碼混淆(proguard)，請在設定檔裡加上
 
 ```
 ##################################

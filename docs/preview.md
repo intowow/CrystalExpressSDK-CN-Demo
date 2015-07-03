@@ -1,12 +1,12 @@
 ﻿<h3 id='preview' style='color:red'>預覽模式</h3>
 
 - CrystalExpress SDK提供各廣告版位預覽功能
-- 利用QRCode掃描的方式進入APP，直接觀看廣告效果
+- 利用QRCode掃描的方式進入應用程式，直接觀看廣告效果
 
 <h4 id='preview-setting' style='color:green'>配置步驟</h4>
 
-- 你必須將QRCode掃描後，所啟動的Activity裡，執行[I2WAPI.init()][I2WAPI-init]。SDK將處理Bundle，進入廣告預覽模式
-- 在[AndroidManifest.xml][TAG-AndroidManifest]裡的launch activity加入
+- 你必須將QRCode掃描後，所啟動的`Activity`裡，執行[I2WAPI.init()][I2WAPI-init]。SDK將處理`Bundle`，進入廣告預覽模式
+- 在[AndroidManifest.xml][TAG-AndroidManifest]裡的`activity`加入
 
 ```xml
 <intent-filter>
@@ -18,7 +18,7 @@
 </intent-filter>
 ```
 
-<span style='font-weight: bold;color:red'>你需提供App的scheme給Intowow後台設定<span/>
+<span style='font-weight: bold;color:red'>你需提供應用程式的`scheme`給Intowow後台設定<span/>
 
 - 若要開始預覽，需先產生QRCode，其格式如下。
 ```

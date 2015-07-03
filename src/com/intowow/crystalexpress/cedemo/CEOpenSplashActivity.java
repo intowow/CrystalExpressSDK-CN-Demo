@@ -79,8 +79,9 @@ public class CEOpenSplashActivity extends Activity {//XXX#OpenSplash#
 			mAd = I2WAPI.requesSingleOfferAD(this, "OPEN_SPLASH");
 			//end
 			
+			//XXX@OpenSplash-setListener@#OpenSplash-setListener#
 			if (mAd != null) {
-				//XXX@OpenSplash-setListener@#OpenSplash-setListener#
+				//	this is a Blocking calls
 				//	implement onLoaded, onLoadFailed and onClosed callback
 				//
 				mAd.setListener(new SplashAdListener() {
@@ -117,18 +118,20 @@ public class CEOpenSplashActivity extends Activity {//XXX#OpenSplash#
 
 					@Override
 					public void onClosed() {
-						//	this callback is called :
-						//	1.user click the close button
-						//	2.user click the back button
-						//	3.dismiss_time setting from the server
+						//	this callback is called when:
+						//	1.user clicks the close button
+						//	2.user clicks the back button
+						//	3.dismiss_time
 						//
 						if(mHandler!=null){
 							startCEStreamActivity();
 						}
 					}
 				});
-				//end
-			} else {
+				
+			} 
+			//end
+			else {
 				startCEStreamActivity();
 			}
 		}

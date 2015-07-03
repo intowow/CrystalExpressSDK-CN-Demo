@@ -1,7 +1,7 @@
-﻿<h3 id='content' style='color:red'>內文廣告(Content Ad)</h3>
+﻿<h3 id='content' style='color:red'>內文廣告</h3>
 
-- 內文廣告(Content Ad)指文章內所加入的廣告(也稱作"IN-READ"廣告)
-- 本範例以`ScrollView`為主，若你使用的是`WebView`，可調整你的布局xml，將`WebView`包入`ScrollView`，如下示意
+- 內文廣告指文章內所加入的廣告
+- 本範例以`ScrollView`為主，若你使用的是`WebView`，可調整你的布局xml檔，將`WebView`包入`ScrollView`，如下示意
 ```xml
 	<CrystalExpressScrollView>
 		<ViewGroup>
@@ -11,7 +11,7 @@
 	<CrystalExpressScrollView/>
 ```
 
-- `ScrollView`布局排列方式，可參考demo範例[activity_content.xml][activity_content.xml]
+- `ScrollView`布局排列方式，可參考範例程式[activity_content.xml][activity_content.xml]
 
 <h4 id='content-1' style='color:red'>串接步驟</h4>
 
@@ -19,7 +19,7 @@
 
 - 加入[CrystalExpressScrollView][Content-scroll]與[ContentHelper.java][Content-helper]
 
-- 在activity裡宣告變數 ([程式範例][Content-init])
+- 在`Activity`裡宣告變數 ([程式範例][Content-init])
 
 <codetag tag="Content-init"/>
 ```java
@@ -29,9 +29,9 @@ private ContentHelper mContentHelper = null;
 ```
 <p/>
 	
-<span style='font-weight: bold;color:red'>請先定義好版位名稱，帶入mPlacement，並提交給Intowow後台設定<span/>
+<span style='font-weight: bold;color:red'>請先定義好版位名稱，帶入`mPlacement`，並提交給Intowow後台設定<span/>
 
-- activity初始mContentHelper([程式範例][Content-inithelper])
+- `Activity`初始`mContentHelper`([程式範例][Content-inithelper])
 
 <codetag tag="Content-inithelper"/>
 ```java
@@ -47,7 +47,7 @@ mContentHelper.onPageSelected(0);
 ```
 <p/>
 
-- 處理scroll view([程式範例][Content-initscroll])
+- 處理`ScrollView`([程式範例][Content-initscroll])
 <codetag tag="Content-initscroll"/>
 ```java
 // callback
@@ -66,7 +66,7 @@ sv.setScrollViewListener(new ScrollViewListener() {
 ```
 <p/>
 
-- 若activity一開始便要讀取廣告，可直接在文章初始流程加上下面讀取的程式。若`contentAdLayout`是放在`webview`之後，也可考慮將此段程式放在`WebViewClient`的`onPageFinished()`裡
+- 若`Activity`一開始便要讀取廣告，可直接在文章初始流程加上下面讀取的程式。若`contentAdLayout`是放在`WebView`之後，也可考慮將此段程式放在`WebViewClient`的`onPageFinished()`裡
 
 <p/>[程式範例][Content-load]<p/>
 <codetag tag="Content-load"/>

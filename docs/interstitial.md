@@ -1,6 +1,6 @@
-﻿<h3 id='interstitialsplash' style='color:red'>插頁蓋屏(Interstitial Splash)</h3>
+﻿<h3 id='interstitialsplash' style='color:red'>插頁蓋屏</h3>
 
-- 插頁蓋屏(Interstitial Splash)廣告指當用戶從文章內容頁返回至文章清單頁時，出現單則蓋屏廣告。
+- 插頁蓋屏廣告指當用戶從文章內容頁返回至文章清單頁時，出現單則蓋屏廣告。
 
 <p/>
 [程式範例][Interstitial]
@@ -16,7 +16,7 @@ private SplashAD mInterstitialSplashAd = null;
 ```
 <p/>
 
-<span style='font-weight: bold;color:red'>請先定義好版位名稱，帶入mInterstitialPlacement，並提交給Intowow後台設定<span/>
+<span style='font-weight: bold;color:red'>請先定義好版位名稱，帶入`mInterstitialPlacement`，並提交給Intowow後台設定<span/>
 
 - 向SDK要求廣告([程式範例][Interstitial-request])
 <codetag tag="Interstitial-request"/>
@@ -25,8 +25,8 @@ mInterstitialSplashAd = I2WAPI.requesSplashAD(CEStreamActivity.this, mInterstiti
 ```
 <p/>
 
-- 設定listener ([程式範例][Interstitial-setListener])
-- 有別於[開機蓋屏(Open Splash)](./opensplash)，此步驟(`setListener()`)為`Non-Blocking calls`
+- 設定回調([程式範例][Interstitial-setListener])
+- 有別於[開機蓋屏](./opensplash)，呼叫`I2WAPI.requesSplashAD()`後，再設定回調時，線程會以非阻塞模式(`Non-Blocking Calls`)進行
 
 <codetag tag="Interstitial-setListener"/>
 ```java
@@ -55,7 +55,7 @@ if (mInterstitialSplashAd != null) {
 ```
 <p/>
 
-- 在onDestroy()釋放廣告 ([程式範例][Interstitial-release])
+- 在`onDestroy()`釋放廣告 ([程式範例][Interstitial-release])
 <codetag tag="Interstitial-release"/>
 ```java
 if (mInterstitialSplashAd != null) {

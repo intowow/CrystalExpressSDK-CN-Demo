@@ -1,6 +1,6 @@
-﻿<h3 id='flip' style='color:red'>翻頁蓋屏(Flip Splash)</h3>
+﻿<h3 id='flip' style='color:red'>翻頁蓋屏</h3>
 
-- 翻頁蓋屏(Flip Splash)廣告泛指用戶左右滑動頁面時所插入的蓋屏廣告
+- 翻頁蓋屏廣告泛指用戶左右滑動頁面時所插入的蓋屏廣告
 
 <h4 id='flip-1' style='color:green'>串接步驟</h4>
 
@@ -15,7 +15,7 @@ private FlipADDeferHelper mFlipHelper = null;
 ```
 <p/>
 
-<span style='font-weight: bold;color:red'>請先定義好版位名稱，帶入mPlacement，並提交給Intowow後台設定<span/>
+<span style='font-weight: bold;color:red'>請先定義好版位名稱，帶入`mPlacement`，並提交給Intowow後台設定<span/>
 
 - `onCreate()`裡初始`mFlipHelper` ([程式範例][Flip-inithelper])
 <codetag tag="Flip-inithelper"/>
@@ -68,7 +68,7 @@ private FlipADDeferHelper mFlipHelper;
 ```
 <p/>
 
-- `PagerAdapter`建構子設定helper([程式範例][Flip-adapterhelper])
+- `PagerAdapter`建構子設定`mFlipHelper`與回調([程式範例][Flip-adapterhelper])
 <codetag tag="Flip-adapterhelper"/>
 ```java
 mFlipHelper = helper;	
@@ -104,7 +104,7 @@ canvas = mFlipHelper.getAD(position);
 ```
 <p/>
 
-- Activity生命週期
+- `Activity`生命週期
 
 `onResume()` ([程式範例][Flip-onResume])
 <codetag tag="Flip-onResume"/>
