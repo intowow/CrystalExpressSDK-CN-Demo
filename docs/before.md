@@ -16,3 +16,12 @@
 	- [intowowsdk.1.1.26.jar](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.26.jar)
 <p/>
 	- [android-support-v4.jar](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.26.jar)
+
+	
+<h4 id='import' style='color:green'>範例程式</h4>
+
+- 整合過程中，你可隨時參考範例程式
+<p/>
+<a target="_blank" href="https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo.git">
+範例程式連結
+<a/>
