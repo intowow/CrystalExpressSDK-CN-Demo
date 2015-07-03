@@ -4,7 +4,7 @@
 
 - 請確認整合之前先向Intowow申請取得應用程式的Crystal ID。
 
-<h4 id='CrystalID' style='color:green'>廣告版位</h4>
+<h4 id='placement' style='color:green'>廣告版位</h4>
 
 - 你應該先定義好各廣告版位的名稱，並提交給Intowow後台設定後，方可看到廣告
 

@@ -132,7 +132,17 @@ public int getDefaultMinPosition(int position) {
 ```
 <p/>
 
-- 在	`Adapter`的`getView()`裡，你必須先檢查該位置是否為廣告，同時你也可以直接設定廣告的背景與寬度。
+- 在	`Adapter`的`getView()`裡，你必須先檢查該位置是否可取得廣告，同時你也可以直接設定廣告的背景與寬度
+
+<span style='font-weight: bold;color:red'>
+當你呼叫`getStreamAd()`時，SDK會檢查此位置是否已加入廣告。若不是廣告，SDK會進一步利用非主線程來讀取廣告
+<span/>
+<p/>
+<span style='font-weight: bold;color:red'>
+當廣告讀取完成時，SDK會呼叫`initADListener()`裡的`onADLoaded()`，讓應用程式決定該把廣告安插至哪個位置
+<span/>
+
+<span style='font-weight: bold;color:red'>註:此時`onADLoaded()`為主線程所執行<span/>
 
 [程式範例][Stream-getView]
 

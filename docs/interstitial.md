@@ -6,7 +6,7 @@
 [程式範例][Interstitial]
 <p/>
 
-<h4 id='interstitialsplash-1' style='color:red'>整合步驟</h4>
+<h4 id='interstitialsplash-1' style='color:green'>整合步驟</h4>
 
 - 宣告變數([程式範例][Interstitial-init])
 <codetag tag="Interstitial-init"/>
