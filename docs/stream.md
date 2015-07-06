@@ -189,6 +189,37 @@ public int getItemViewType(int position) {
 ```
 <p/>
 
+<span id="streamActive"/>
+
+- 啟動該列表廣告
+	- 當`Adapter`初始完成，而且用戶正在瀏覽開列表時，需呼叫`setActive()`，通知SDK此列表已啟動
+
+[程式範例][Stream-active]
+
+<codetag tag="Stream-active"/>
+```java
+//	let the SDK know that this placement is active now
+//
+mAdapter.setActive();
+```
+<p/>
+
+<span style='font-weight: bold;color:red'>
+若應用程式有多個列表，需注意當切換列表時，被選到列表的`Adapter`需設定`setActive()`
+<span/>
+
+[程式範例][Stream-actives]
+
+<codetag tag="Stream-actives"/>
+```java
+//	let the SDK know that this adapter is active now
+//
+if (mAdapters.get(position) != null) {
+	mAdapters.get(position).setActive();
+}
+```
+<p/>
+
 - `Activity`生命週期
 
 `onResume()` ([程式範例][Stream-onResume])
@@ -300,7 +331,7 @@ mPullToRefreshListView.setOnScrollListener(new OnScrollListener() {
 
 
 
-[Stream-ListView]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L85 "StreamActivity.java" 
+[Stream-ListView]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L87 "StreamActivity.java" 
 [Stream-onScroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/PullToRefreshStreamActivity.java#L146 "PullToRefreshStreamActivity.java" 
 [Stream-onItemClickListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/PullToRefreshStreamActivity.java#L119 "PullToRefreshStreamActivity.java" 
 [Stream-DeferStreamAdapter]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamAdapter.java#L19 "StreamAdapter.java" 
@@ -313,8 +344,10 @@ mPullToRefreshListView.setOnScrollListener(new OnScrollListener() {
 [Stream-getDefaultMinPosition]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamAdapter.java#L227 "StreamAdapter.java" 
 [Stream-getView]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamAdapter.java#L77 "StreamAdapter.java" 
 [Stream-getItemViewType]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamAdapter.java#L57 "StreamAdapter.java" 
-[Stream-onResume]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L106 "StreamActivity.java" 
-[Stream-onPause]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L118 "StreamActivity.java" 
-[Stream-onDestroy]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L129 "StreamActivity.java" 
+[Stream-onResume]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L108 "StreamActivity.java" 
+[Stream-onPause]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L120 "StreamActivity.java" 
+[Stream-onDestroy]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L131 "StreamActivity.java" 
 [Stream-PullToRefreshStreamActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/PullToRefreshStreamActivity.java#L26 "PullToRefreshStreamActivity.java" 
 [Stream-pullinit]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/PullToRefreshStreamActivity.java#L40 "PullToRefreshStreamActivity.java" 
+[Stream-active]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/stream/StreamActivity.java#L79 "StreamActivity.java" 
+[Stream-actives]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L561 "CEStreamActivity.java" 

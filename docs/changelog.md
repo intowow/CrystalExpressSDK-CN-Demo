@@ -7,6 +7,12 @@
 	</thead>
 	<tbody>
 		<tr>
+			<td align="center">2.0</td><td>2015/07/06</td>
+			<td>
+				<a href="../stream/#streamActive">新增Adapter.setActive()描述<a/>
+			</td>
+		</tr>
+		<tr>
 			<td align="center">1.0</td><td>2015/07/02</td><td>文件初版</td>
 		</tr>
 	</tbody>

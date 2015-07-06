@@ -558,9 +558,13 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		}
 
 		public void refreshAd(int position) {
+			//XXX@Stream-actives@#Stream-actives#
+			//	let the SDK know that this adapter is active now
+			//
 			if (mAdapters.get(position) != null) {
 				mAdapters.get(position).setActive();
 			}
+			//end
 
 			mAdPos = position;
 		}

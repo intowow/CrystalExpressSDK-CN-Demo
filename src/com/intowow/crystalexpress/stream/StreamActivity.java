@@ -76,9 +76,11 @@ public class StreamActivity extends Activity {//XXX#Stream-StreamActivity#
 				lm.getMetric(LayoutID.STREAM_LIST_ITEM_PADDING_TOP_BUTTOM),
 				lm.getMetric(LayoutID.STREAM_LIST_ITEM_HEIGHT));
 		
+		//XXX@Stream-active@#Stream-active#
 		//	let the SDK know that this placement is active now
 		//
 		mAdapter.setActive();
+		//end
 		
 		//	ListView
 		//
