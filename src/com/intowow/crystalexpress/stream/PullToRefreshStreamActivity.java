@@ -222,10 +222,6 @@ public class PullToRefreshStreamActivity extends Activity {//XXX#Stream-PullToRe
 		@Override
 		protected List<Object> doInBackground(Void... params) {
 			// Simulates a background job.
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-			}
 			return mItems;
 		}
 

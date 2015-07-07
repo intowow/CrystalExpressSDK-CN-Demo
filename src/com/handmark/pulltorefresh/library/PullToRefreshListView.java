@@ -309,8 +309,6 @@ public class PullToRefreshListView extends PullToRefreshAdapterViewBase<ListView
 			} catch (IndexOutOfBoundsException e) {
 				e.printStackTrace();
 				return false;
-			} catch (Exception e) {
-				return false;
 			}
 		}
 
