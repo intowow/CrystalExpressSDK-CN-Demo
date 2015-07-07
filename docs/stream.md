@@ -87,7 +87,7 @@ public void initADListener() {
 ```
 <p/>
 
-- 實作`initStreamADListener()`的目的是當你需呼叫`onDataSetChanged()`時，SDK需要重新安插之前已加入的廣告至原來的位置。 
+- 實作`initStreamADListener()`的目的是當你需呼叫`adapter.notifyDataSetChanged()`時，SDK需要在此之前，重新安插已加入過的廣告至原來的位置。 
 若該位置已是廣告，不會重新安插。
 
 [程式範例][Stream-initStreamADListener]
