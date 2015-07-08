@@ -23,6 +23,8 @@
 </activity>
 ```
 
+<span style="color:red">註:若應用程式的`build target`低於13，你將需要移除`android:configChanges`屬性裡的`screenSize`</span>
+
 <h4 id='Receiver' style='color:green'>Receiver</h4>
 
 ```xml
