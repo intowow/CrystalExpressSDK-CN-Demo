@@ -1,6 +1,5 @@
 package com.intowow.crystalexpress.content;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -14,16 +13,18 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
+import com.intowow.crystalexpress.cedemo.BaseActivity;
 import com.intowow.crystalexpress.content.CrystalExpressScrollView.ScrollViewListener;
 import com.intowow.sdk.I2WAPI;
 
-public class ContentActivity extends Activity {//XXX#Content-activity#
+public class ContentActivity extends BaseActivity {//XXX#Content-activity#
 
 	// XXX@Content-init@#Content-init#
-	private final static String mPlacement = "CONTENT";
+	private final static String mPlacement = Config.CONTENT_PLACEMENT;
 	private ContentHelper mContentHelper = null;
 
 	// end
@@ -161,47 +162,34 @@ public class ContentActivity extends Activity {//XXX#Content-activity#
 		// end
 	}
 
-	@Override
-	public void onStart() {
-		super.onStart();
-
-		I2WAPI.init(this);
-	}
-
+	//XXX@Content-life@#Content-life#
 	@Override
 	public void onResume() {
 		super.onResume();
 
-		I2WAPI.onActivityResume(this);
-		// XXX@Content-onResume@#Content-onResume#
 		if (mContentHelper != null) {
 			mContentHelper.start();
 		}
-		//end
 	}
 
 	@Override
 	public void onPause() {
 		super.onPause();
 
-		I2WAPI.onActivityPause(this);
-		// XXX@Content-onPause@#Content-onPause#
 		if (mContentHelper != null) {
 			mContentHelper.stop();
 		}
-		//end
 	}
 
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
 
-		// XXX@Content-onDestroy@#Content-onDestroy#
 		if (mContentHelper != null) {
 			mContentHelper.destroy();
 			mContentHelper = null;
 		}
-		//end
+		
 	}
-
+	//end
 }

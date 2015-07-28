@@ -11,7 +11,7 @@
         android:background="@drawable/stream_title"
         />
 
-    <com.intowow.sdk.CrystalExpressListView
+    <ListView
         android:id="@+id/listView"
         android:layout_below="@+id/title"
         android:layout_width="fill_parent"

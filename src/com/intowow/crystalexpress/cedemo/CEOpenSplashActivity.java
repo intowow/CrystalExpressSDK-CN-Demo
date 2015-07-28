@@ -97,7 +97,14 @@ public class CEOpenSplashActivity extends Activity {//XXX#OpenSplash#
 						
 						//	show splash ad here
 						//
+						//	you can use normal transition effect
+						//
 						mAd.show();
+						
+						//	or use overridePendingTransition 
+						//	(only support single-offer and portrait ad)
+						//	
+						//	mAd.show(R.anim.damping_in, R.anim.damping_out);
 						
 					}
 
@@ -121,7 +128,7 @@ public class CEOpenSplashActivity extends Activity {//XXX#OpenSplash#
 						//	this callback is called when:
 						//	1.user clicks the close button
 						//	2.user clicks the back button
-						//	3.dismiss_time
+						//	3.dismiss_time setting from the server
 						//
 						if(mHandler!=null){
 							startCEStreamActivity();

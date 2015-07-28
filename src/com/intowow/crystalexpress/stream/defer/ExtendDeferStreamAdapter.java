@@ -1,4 +1,4 @@
-package com.intowow.crystalexpress.stream;
+package com.intowow.crystalexpress.stream.defer;
 
 import java.util.List;
 
@@ -13,10 +13,12 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.R;
+import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.sdk.DeferStreamAdapter;
 
-public class StreamAdapter extends DeferStreamAdapter {//XXX#Stream-DeferStreamAdapter#
+public class ExtendDeferStreamAdapter extends DeferStreamAdapter {//XXX#Stream-DeferStreamAdapter#
 
 	List<Object> mList;
 	Activity mContext;
@@ -27,24 +29,37 @@ public class StreamAdapter extends DeferStreamAdapter {//XXX#Stream-DeferStreamA
 	int mStreamListItemPaddingLeftRight = 0;
 	int mStreamListItemHeight = 0;
 	
-	public StreamAdapter(Activity c, 
+	public ExtendDeferStreamAdapter(Activity c, 
 			String placement, 
-			List<Object> list, 
-			int[] pics,
-			int streamListItemPaddingLeftRight,
-			int streamListItemPaddingTopButtom,
-			int streamListItemHeight){//XXX#Stream-placement#
+			List<Object> list){//XXX#Stream-placement#
 		
+		//	set the placement and the DeferStreamAdapter
+		//	will auto create the StreamHelper
+		//
 		super(c, placement);
 		
+		//***********************************************
+		//	common UI
+		//
 		mContext = c;
 		mInflater = LayoutInflater.from(c);
 		mList = list;
-		mPics = pics;
 		
-		mStreamListItemPaddingLeftRight = streamListItemPaddingLeftRight;
-		mStreamListItemPaddingTopButtom = streamListItemPaddingTopButtom;
-		mStreamListItemHeight = streamListItemHeight;
+		mPics = new int[5];
+		mPics[0]=R.drawable.business_1;
+		mPics[1]=R.drawable.business_2;
+		mPics[2]=R.drawable.business_3;
+		mPics[3]=R.drawable.business_4;
+		mPics[4]=R.drawable.business_5;
+		
+		LayoutManager lm = LayoutManager.getInstance(mContext);
+		
+		mStreamListItemPaddingLeftRight = 
+				lm.getMetric(LayoutID.STREAM_LIST_ITEM_PADDING_LEFT_RIGHT);
+		mStreamListItemPaddingTopButtom = 
+				lm.getMetric(LayoutID.STREAM_LIST_ITEM_PADDING_TOP_BUTTOM);
+		mStreamListItemHeight = 
+				lm.getMetric(LayoutID.STREAM_LIST_ITEM_HEIGHT);
 	}
 	
 	public void setList(List<Object> list) {
@@ -76,10 +91,10 @@ public class StreamAdapter extends DeferStreamAdapter {//XXX#Stream-DeferStreamA
 	public View getView(int position, View convertView, ViewGroup parent) {
 		//XXX@Stream-getView@#Stream-getView#
 		// Get ad view if possible
-		final View adView =  getStreamAd(position);	
+		final View adView =  getAD(position);	
 		
 		//	or you can resize the ad width by this way
-		//	final View adView =  getStreamAd(position, 700);
+		//	final View adView =  getAD(position, someIntWidth);
 		//
 		
 		if(adView != null) {
@@ -160,67 +175,73 @@ public class StreamAdapter extends DeferStreamAdapter {//XXX#Stream-DeferStreamA
 	}
 
 	/**
-	 * you should implement this method to tell the SDK which position you want to add
+	 * to tell the SDK which position you want to add
 	 * */
-	//XXX@Stream-initADListener@#Stream-initADListener#
+	//XXX@Stream-onADLoaded@#Stream-onADLoaded#
 	@Override
-	public void initADListener() {
-		setAdListener(new com.intowow.sdk.StreamHelper.ADListener() {
-
-			@Override
-			public int onADLoaded(int position) {
-				// 	when the SDK load one stream ad,
-				//	it will call this callback for getting 
-				//	the position you add in the DataSet.
-				//
-				//	if you call getStreamAd in the getView(),
-				//	the SDK will return the ad refer to this position.
-				//
-				//	if you return "-1", it means that the ad is not added in your DataSet
-				//
-				
-				position = getDefaultMinPosition(position);
-				
-				if (mList.size() >  position) {				
-					// just allocate one position for stream ad
-					//
-					mList.add(position, null);
-					notifyDataSetChanged();
-					return position;
-				}
-				else {				
-					return -1;
-				}
-			}
+	public int onADLoaded(int position) {
+		//
+		// 	when one stream ad has been loaded,
+		//	the SDK will need to know which position 
+		//	can show this ad in your DataSet.
+		//	so the SDK will call onADLoaded(position) for getting 
+		//	one position that you have already allocate in your DataSet.
+		//	then, if you call getAD(position) in the getView() later,
+		//	the SDK will return one ad or null refer to onADLoaded's 
+		//	return value.
+		//
+		//	if you return "-1", it means that the ad is not added in your 
+		//	DataSet.
+		
+		//	for example:
+		//	if you return "5" from the onADLoaded(position) first,
+		//	and you request a ad by calling the getAD(5) in the getView() 
+		//	later,
+		//	the SDK will know that this position(5) can response a ad for 
+		//	the App 
+		//	
+		
+		position = getDefaultMinPosition(position);
+		
+		if (mList.size() >  position) {	
 			
-		});
+			// just allocate one position for stream ad
+			//
+			mList.add(position, null);
+			
+			//	be sure to call the notifyDataSetChanged()
+			//
+			notifyDataSetChanged();
+			
+			return position;
+		}
+		else {				
+			return -1;
+		}
 	}
 	//end
-
-	/**
-	 * you should implement this method to tell the SDK that your DataSet has been changed
-	 * */
-	//XXX@Stream-initStreamADListener@#Stream-initStreamADListener#
+	
+	//XXX@Stream-notifyDataSetChanged@#Stream-notifyDataSetChanged#
 	@Override
-	public void initStreamADListener() {
-		setStreamADListener(new StreamADListener() {
-
-			@Override
-			public void onDataSetChanged() {
-				for (Integer pos : getAddedStreamAdPosition()) {
-					if(pos > mList.size()) {
-						return;
-					}
-					
-					//	check ad case
-					//
-					if(mList.get(pos) == null || mList.get(pos).equals("null")) {
-						continue;
-					}
-					
-					mList.add(pos , null);
-				}
-			}});
+	public void notifyDataSetChanged() {
+		//	if your DataSet has been changed
+		//	the SDK will need to re-allocate the ad 
+		//	which you have added in the DataSet before
+		//
+		for (Integer pos : getAddedPosition()) {
+			if(pos > mList.size()) {
+				return;
+			}
+			
+			//	check ad case
+			//
+			if(mList.get(pos) == null || mList.get(pos).equals("null")) {
+				continue;
+			}
+			
+			mList.add(pos , null);
+		}
+		super.notifyDataSetChanged();
 	}
 	//end
 	

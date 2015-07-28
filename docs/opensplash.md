@@ -6,7 +6,7 @@
 
 <img style="display:block; margin:auto;" src="https://s3.cn-north-1.amazonaws.com.cn/intowow-common/preview/img/splash2-demo.png" alt="splash demo" width="250">
 
-<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-common/preview/SPLASH2_VIDEO_GENERAL_P_ICLICK.html" target="_blank">效果預覽<a/>
+<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-common/preview/SPLASH2_VIDEO_GENERAL_P_ICLICK.html" target="_blank">效果預覽</a>
 
 
 <h4 id='opensplash-1' style='color:green'>整合步驟</h4>
@@ -51,7 +51,7 @@ mAd = I2WAPI.requesSingleOfferAD(this, "OPEN_SPLASH");
 
 - 有別於[插頁蓋屏](./interstitial)，呼叫`I2WAPI.requesSingleOfferAD()`後，再設定回調時，線程會以阻塞模式(`Blocking Calls`)進行
 
-<codetag tag="OpenSplash-setListener"/>
+<codetag tag="OpenSplash-setListener" id="OpenSplash-callback"/>
 ```java
 if (mAd != null) {
 	//	this is a Blocking calls
@@ -70,7 +70,14 @@ if (mAd != null) {
 
 			//	show splash ad here
 			//
+			//	you can use normal transition effect
+			//
 			mAd.show();
+
+			//	or use overridePendingTransition 
+			//	(only support single-offer and portrait ad)
+			//	
+			//	mAd.show(R.anim.damping_in, R.anim.damping_out);
 
 		}
 
@@ -94,7 +101,7 @@ if (mAd != null) {
 			//	this callback is called when:
 			//	1.user clicks the close button
 			//	2.user clicks the back button
-			//	3.dismiss_time
+			//	3.dismiss_time setting from the server
 			//
 			if(mHandler!=null){
 				startCEStreamActivity();
@@ -107,7 +114,7 @@ if (mAd != null) {
 <p/>
 
 - 加入`onConfigurationChanged()`，處理橫式廣告 ([程式範例][OpenSplash-onConfigurationChanged])
-<codetag tag="OpenSplash-onConfigurationChanged"/>
+<codetag tag="OpenSplash-onConfigurationChanged" id="OpenSplash-onConfigurationChanged"/>
 ```java
 @Override
 public void onConfigurationChanged(Configuration newConfig) {
@@ -124,10 +131,10 @@ public void onConfigurationChanged(Configuration newConfig) {
 	- 在該`Activity`裡加上android:configChanges="orientation|screenSize"
 
 
-[OpenSplash-onConfigurationChanged]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L29 "CEOpenSplashActivity.java" 
-[OpenSplash-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L82 "CEOpenSplashActivity.java" 
-[OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L78 "CEOpenSplashActivity.java" 
-[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
-[OpenSplash-mAd]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L25 "CEOpenSplashActivity.java" 
-[OpenSplash-BackgroundTask]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/opensplash/OpenSplashActivity.java#L58 "OpenSplashActivity.java" 
-[OpenSplash]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L14 "CEOpenSplashActivity.java" 
+[OpenSplash-onConfigurationChanged]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L29 "CEOpenSplashActivity.java" 
+[OpenSplash-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L82 "CEOpenSplashActivity.java" 
+[OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L78 "CEOpenSplashActivity.java" 
+[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
+[OpenSplash-mAd]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L25 "CEOpenSplashActivity.java" 
+[OpenSplash-BackgroundTask]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/opensplash/OpenSplashActivity.java#L58 "OpenSplashActivity.java" 
+[OpenSplash]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L14 "CEOpenSplashActivity.java" 

@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
 
+import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
@@ -31,7 +32,7 @@ public class FlipActivity extends Activity {//XXX#Flip-activity#
 	//	flip ad
 	//
 	//XXX@Flip-init@#Flip-init#
-	private final static String mPlacement = "FLIP";
+	private final static String mPlacement = Config.FLIP_PLACEMENT;
 	private FlipADDeferHelper mFlipHelper = null;
 	//end
 	private FlipPagerAdapter mFlipPagerAdapter = null;

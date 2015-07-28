@@ -10,7 +10,7 @@
 
 <codetag tag="Flip-init"/>
 ```java
-private final static String mPlacement = "FLIP";
+private final static String mPlacement = Config.FLIP_PLACEMENT;
 private FlipADDeferHelper mFlipHelper = null;
 ```
 <p/>
@@ -136,14 +136,14 @@ if(mFlipHelper != null) {
 
 
 
-[Flip-activity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipActivity.java#L21 "FlipActivity.java" 
-[Flip-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipActivity.java#L33 "FlipActivity.java" 
-[Flip-inithelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipActivity.java#L52 "FlipActivity.java" 
-[Flip-constructor]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipActivity.java#L60 "FlipActivity.java" 
-[Flip-listener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipPagerAdapter.java#L222 "FlipPagerAdapter.java" 
-[Flip-adapterinit]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipPagerAdapter.java#L41 "FlipPagerAdapter.java" 
-[Flip-adapterhelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipPagerAdapter.java#L56 "FlipPagerAdapter.java" 
-[Flip-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipPagerAdapter.java#L113 "FlipPagerAdapter.java" 
-[Flip-onResume]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipActivity.java#L86 "FlipActivity.java" 
-[Flip-onPause]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipActivity.java#L98 "FlipActivity.java" 
-[Flip-onDestroy]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/flip/FlipActivity.java#L110 "FlipActivity.java" 
+[Flip-activity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipActivity.java#L22 "FlipActivity.java" 
+[Flip-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipActivity.java#L34 "FlipActivity.java" 
+[Flip-inithelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipActivity.java#L53 "FlipActivity.java" 
+[Flip-constructor]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipActivity.java#L61 "FlipActivity.java" 
+[Flip-listener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipPagerAdapter.java#L222 "FlipPagerAdapter.java" 
+[Flip-adapterinit]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipPagerAdapter.java#L41 "FlipPagerAdapter.java" 
+[Flip-adapterhelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipPagerAdapter.java#L56 "FlipPagerAdapter.java" 
+[Flip-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipPagerAdapter.java#L113 "FlipPagerAdapter.java" 
+[Flip-onResume]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipActivity.java#L87 "FlipActivity.java" 
+[Flip-onPause]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipActivity.java#L99 "FlipActivity.java" 
+[Flip-onDestroy]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/flip/FlipActivity.java#L111 "FlipActivity.java" 

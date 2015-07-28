@@ -1,4 +1,4 @@
-package com.intowow.crystalexpress.cedemo;
+package com.intowow.crystalexpress.stream.streamhelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,6 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -41,22 +40,16 @@ import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.R;
-import com.intowow.crystalexpress.stream.defer.ExtendDeferStreamAdapter;
-import com.intowow.sdk.I2WAPI;
-import com.intowow.sdk.SplashAD;
-import com.intowow.sdk.SplashAD.SplashAdListener;
+import com.intowow.crystalexpress.cedemo.BaseActivity;
+import com.intowow.sdk.StreamHelper;
 
-/**
- * to let the SDK know the App status. (foreground or background)
- * you can let your activity extend BaseActivity simply.
- * */
-public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivity#
-
+public class MultipleStreamHelperActivity extends BaseActivity{
+	
 	//***********************************************
 	//	common UI
 	//
 	private final static int ITEM_SIZE = 200;
-	private List<Object> mItems = new ArrayList<Object>(ITEM_SIZE);
+	private List<List<Object>> mItems = new ArrayList<List<Object>>(5);
 	private RelativeLayout mTitleLayout = null;
 	private BreadcrumbView mBreadcrumbView = null;
 	private ArrayList<String> mSections;
@@ -78,23 +71,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 	/**you can setup placements for your section from the server*/
 	private final static String[] mPlacements = Config.STREAM_PLACEMENTS;
 	
-	//	interstitial ad 
-	//
-	//XXX@Interstitial-init@#Interstitial-init#
-	private final static String mInterstitialPlacement = Config.INTERSTITIAL_PLACEMENT;
-	private SplashAD mInterstitialSplashAd = null;
-	//end
-	private boolean mIsNeedLoadInterstitialAd = false;
-	public static final String KEY_LOAD_INTERSTITIAL_AD = "KEY_LOAD_INTERSTITIAL_AD";
-	
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		//	for splash ad,
-		//	you have to add this method in the activity,
-		//	remember to add the android:configChanges="orientation|screenSize" property
-		//	in the Androidanifest.xml
-		super.onConfigurationChanged(newConfig);
-	}
+	private SparseArray<StreamHelper> mStreamHelpers = new SparseArray<StreamHelper>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,93 +79,20 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		setContentView(createContentView());
 		
 		mHandler = new Handler();
-		
-		//	after you come back from CEContentActivity
-		//	you can load the interstitial ad 
-		//
-		Bundle b = null;
-		if(getIntent()!=null){
-			b = this.getIntent().getExtras();
-		}else if(savedInstanceState!=null){
-			b = savedInstanceState;
-		}
-		
-		mIsNeedLoadInterstitialAd = isNeedLoadInterstitialAd(b);
-		
-		if(mIsNeedLoadInterstitialAd) {
-			b.remove(KEY_LOAD_INTERSTITIAL_AD);
-		}
 	}
 	
-	private boolean isNeedLoadInterstitialAd(Bundle bundle) {
-		if(bundle == null) {
-			return false;
-		}
-		
-		String keyLoadInterstitialAd =bundle.getString(KEY_LOAD_INTERSTITIAL_AD);
-		if(keyLoadInterstitialAd!=null && keyLoadInterstitialAd.equals("Y")){
-			return true;
-		}
-		
-		return false;
-	}
-	
-	private void loadInterstitialSplashAd() {
-		
-		//	in order not to effect the stream ad,
-		//	you can load the interstitial ad with postDelayed
-		//
-		if(mHandler == null) {
-			return;
-		}
-		mHandler.postDelayed(new Runnable() {
-
-			@Override
-			public void run() {
-				//	request the interstitial splash ad
-				//
-				//XXX@Interstitial-request@#Interstitial-request#
-				mInterstitialSplashAd = I2WAPI.requesSplashAD(CEStreamActivity.this, mInterstitialPlacement);
-				//end
-				
-				//XXX@Interstitial-setListener@#Interstitial-setListener#
-				if (mInterstitialSplashAd != null) {
-					//	this is a Non-Blocking calls
-					//
-					mInterstitialSplashAd.setListener(new SplashAdListener() {
-
-						@Override
-						public void onLoaded() {
-							mInterstitialSplashAd.show();
-						}
-
-						@Override
-						public void onLoadFailed() {
-						}
-
-						@Override
-						public void onClosed() {
-							//	be sure to release the splash ad here
-							//
-							mInterstitialSplashAd.release();
-						}
-					});
-				}
-				//end
-			}
-			
-		}, 1000);
-		
-
-	}
-
 	private View createContentView() {
 		LayoutManager lm = LayoutManager.getInstance(this);
 
 		// list view simulate data
 		//
-		for (int i = 0; i < ITEM_SIZE; i++) {
-			mItems.add(new Object());
+		List<Object> items = null;
+		for(int i = 0 ; i < mPlacements.length ; i++) {
+			items = new ArrayList<Object>(ITEM_SIZE);
+			for (int j = 0; j< ITEM_SIZE; j++) {
+				items.add(new Object());
+			}
+			mItems.add(items);
 		}
 		
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
@@ -250,7 +154,6 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		mPager.setLayoutParams(params);
 		mPager.setAdapter(mPagerAdapter);
 		mPager.setOnPageChangeListener(new OnPageChangeListener() {
-
 			@Override
 			public void onPageScrollStateChanged(int state) {
 				mScrollState = state;
@@ -266,7 +169,13 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 				}
 
 			}
-			
+
+			@Override
+			public void onPageScrolled(int pos, float positionOffset,
+					int positionOffsetPixels) {
+				mBreadcrumbView.select(pos + positionOffset);
+			}
+
 			@Override
 			public void onPageSelected(final int pos) {
 				mDeferIndex = pos;
@@ -278,12 +187,6 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 					//
 					performDeferUpdate();
 				}
-			}
-
-			@Override
-			public void onPageScrolled(int pos, float positionOffset,
-					int positionOffsetPixels) {
-				mBreadcrumbView.select(pos + positionOffset);
 			}
 		});
 
@@ -316,17 +219,6 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 	public void onResume() {
 		super.onResume();
 		
-		//	load interstitial ad.
-		//	the "mIsNeedLoadInterstitialAd" flag is checked from onCreate().
-		//	if CEStreamActivity is launched by the CEContentActivity,
-		//	then this flag should be "true"
-		//
-		//XXX#Interstitial#
-		if(mIsNeedLoadInterstitialAd) {
-			mIsNeedLoadInterstitialAd = false;
-			loadInterstitialSplashAd();
-		}
-
 		if (mPagerAdapter != null) {
 			mPagerAdapter.resumeAd();
 		}
@@ -351,13 +243,6 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 			mPagerAdapter = null;
 		}
 		
-		//XXX@Interstitial-release@#Interstitial-release#
-		if (mInterstitialSplashAd != null) {
-			mInterstitialSplashAd.release();
-			mInterstitialSplashAd = null;
-		}
-		//end
-
 		if (mPager != null) {
 			mPager.setOnPageChangeListener(null);
 			mPager = null;
@@ -386,7 +271,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		public BreadcrumbView(Context context) {
 			super(context);
 
-			mlm = LayoutManager.getInstance(CEStreamActivity.this);
+			mlm = LayoutManager.getInstance(MultipleStreamHelperActivity.this);
 
 			setBackgroundColor(Color.WHITE);
 			mContext = context;
@@ -523,7 +408,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 	class SectionPagerAdapter extends PagerAdapter {
 		ArrayList<String> mSections;
 		HashMap<Integer, RelativeLayout> mCanvas;
-		SparseArray<ExtendDeferStreamAdapter> mAdapters;
+		SparseArray<StreamHelperAdapter> mAdapters;
 
 		Context mContext;
 		int mAdPos = 0;
@@ -533,43 +418,38 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 			mContext = c;
 			mSections = sections;
 			mCanvas = new HashMap<Integer, RelativeLayout>();
-			mAdapters = new SparseArray<ExtendDeferStreamAdapter>();
+			mAdapters = new SparseArray<StreamHelperAdapter>();
 		}
 
 		public void release() {
 			mContext = null;
-			if (mAdapters != null) {
-				for (int i = 0; i < mAdapters.size(); ++i) {
-					mAdapters.valueAt(i).release();
-				}
-			}
 			mCanvas = null;
 			mAdapters = null;
 		}
 
 		public void refreshAd(int position) {
-			//	let the SDK know that this adapter is active now
-			//
-			if (mAdapters.get(position) != null) {
-				mAdapters.get(position).setActive();
+			//XXX@Stream-StreamHelper-active@#Stream-StreamHelper-active#
+			if (mStreamHelpers.get(position) != null) {
+				mStreamHelpers.get(position).setActive();
 			}
+			//end
 
 			mAdPos = position;
 		}
 
 		public void stopAd() {
-			if (mAdapters != null) {
-				for (int i = 0; i < mAdapters.size(); ++i) {
-					mAdapters.valueAt(i).onPause();
+			if (mStreamHelpers != null) {
+				for (int i = 0 ; i < mStreamHelpers.size(); ++i) {
+					mStreamHelpers.valueAt(i).onPause();				
 				}
 			}
 		}
 
 		public void resumeAd() {
-			if (mAdapters != null) {
-
-				for (int i = 0; i < mAdapters.size(); ++i) {
-					mAdapters.valueAt(i).onResume();
+			if (mStreamHelpers != null) {
+				
+				for (int i = 0 ; i < mStreamHelpers.size(); ++i) {
+					mStreamHelpers.valueAt(i).onResume();				
 				}
 			}
 		}
@@ -599,13 +479,48 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 				mCanvas.put(position, canvas);
 
 				//	XXX
+				final StreamHelper helper = new StreamHelper(MultipleStreamHelperActivity.this, mPlacements[position]);
+
+				mStreamHelpers.put(position, helper);
+				
+				final List<Object> items = mItems.get(position);
 				// adapter
 				//
-				final ExtendDeferStreamAdapter adapter = new ExtendDeferStreamAdapter(
-						CEStreamActivity.this,
-						mPlacements[position],
-						mItems);
+				final StreamHelperAdapter adapter = new StreamHelperAdapter(
+						MultipleStreamHelperActivity.this,
+						helper,
+						items);
 
+				//	set heler listener
+				//
+				helper.setListener(new StreamHelper.ADListener() {
+					
+					@Override
+					public int onADLoaded(int position) {
+						// 	when the SDK load one stream ad,
+						//	it will call this callback for getting 
+						//	the position you add in the DataSet.
+						//
+						//	if you call getAD() in the getView(),
+						//	the SDK will return the ad refer to this position.
+						//
+						//	if you return "-1", it means that the ad is not added in your DataSet
+						//
+						position = getDefaultMinPosition(position);
+						
+						if (items != null && items.size() >  position) {				
+							// just allocate one position for stream ad
+							//
+							items.add(position, null);
+							adapter.notifyDataSetChanged();
+							return position;
+						}
+						else {				
+							return -1;
+						}
+					}
+				});
+				
 				// put the adapter
 				//
 				mAdapters.put(position, adapter);
@@ -616,7 +531,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 						RelativeLayout.LayoutParams.MATCH_PARENT,
 						RelativeLayout.LayoutParams.MATCH_PARENT);
 				final PullToRefreshListView pullToRefreshListView = new PullToRefreshListView(
-						CEStreamActivity.this);
+						MultipleStreamHelperActivity.this);
 				pullToRefreshListView.setBackgroundColor(Color
 						.parseColor("#e7e7e7"));
 				pullToRefreshListView.setLayoutParams(rParams);
@@ -659,7 +574,6 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 				 * additionally check OnItemClickListener and OnScrollListener
 				 * 
 				 * */
-				//XXX@Stream-OnItemClickListener@#Stream-OnItemClickListener#
 				//	if you use PullToRefresh library, 
 				//	then you should check the position offset 
 				//	in the scroll listener and item click listener
@@ -677,7 +591,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 								//	you should check is this position is ad first
 								//	then do your original logic later
 								//
-								if (adapter != null && adapter.isAd(position)) {
+								if (helper != null && helper.isAd(position)) {
 									return;
 								}
 
@@ -685,17 +599,10 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 								// if you have already implemented this listener,
 								// add your original code here
 								// ...
-								
-								Intent intent = new Intent();
-								intent.setClass(CEStreamActivity.this, CEContentActivity.class);
-								startActivity(intent);
-								finish();
 
 							}
 						});
-				//end
-				
-				//XXX@Stream-Pull-OnScrollListener@#Stream-Pull-OnScrollListener#
+
 				pullToRefreshListView
 						.setOnScrollListener(new OnScrollListener() {
 
@@ -707,8 +614,8 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 								// add your original code here
 								// ...
 
-								if (adapter != null) {
-									adapter.onScrollStateChanged(view,
+								if (helper != null) {
+									helper.onScrollStateChanged(view,
 											scrollState);
 								}
 							}
@@ -722,11 +629,12 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 								// add your original code here
 								// ...
 
-								if (adapter != null) {
-									final int FIRST_VISIBLE_ITEM_OFFSET = -1;
+								if (helper != null) {
 									// pass the right position on to the SDK
 									//
-									adapter.onScroll(
+									final int FIRST_VISIBLE_ITEM_OFFSET = -1;
+									
+									helper.onScroll(
 											view,
 											firstVisibleItem
 													+ FIRST_VISIBLE_ITEM_OFFSET,
@@ -736,8 +644,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 								}
 							}
 						});
-				//end
-				
+
 				canvas.addView(pullToRefreshListView);
 			}
 
@@ -765,6 +672,11 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		startActivity(intent);
 		
 		finish();
+	}
+	
+	public int getDefaultMinPosition(int position) {
+		// Don't place ad at the first place
+		return Math.max(1, position);
 	}
 	
 	class RefreshList implements Runnable{

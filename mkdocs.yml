@@ -16,5 +16,7 @@ pages:
 - '程式碼混淆': 'proguard.md'
 - '預覽模式': 'preview.md'
 - '廣告曝光與點擊回調機制': 'adevent.md'
+- '檢查要點': 'checkpoint.md'
+- '問題集': 'faq.md'
 - 'API': 'api.md'
 theme: readthedocs

@@ -102,7 +102,14 @@ public class OpenSplashActivity extends Activity {
 						
 						//	show splash ad here
 						//
+						//	you can use normal transition effect
+						//
 						mAd.show();
+						
+						//	or use overridePendingTransition 
+						//	(only support single-offer and portrait ad)
+						//	
+						//	mAd.show(R.anim.damping_in, R.anim.damping_out);
 						
 					}
 
@@ -124,7 +131,7 @@ public class OpenSplashActivity extends Activity {
 
 					@Override
 					public void onClosed() {
-						//	this callback is called :
+						//	this callback is called when:
 						//	1.user click the close button
 						//	2.user press the onBackpress button
 						//	3.dismiss_time setting from the server
@@ -153,7 +160,6 @@ public class OpenSplashActivity extends Activity {
 	 * and remember to finish this activity
 	 * */
 	private synchronized void startMainActivity() {//TODO
-		
 		if(!mIsStartMainActivity && mIsBackgroundTaskDone && mIsOpenSplashAdDone) {
 			Intent intent = new Intent();
 			intent.setClass(this, mMainActivity);

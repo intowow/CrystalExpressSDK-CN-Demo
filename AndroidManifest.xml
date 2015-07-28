@@ -33,8 +33,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="crystalexpress" android:host="adpreview" />
-                <data android:scheme="crystalexpress" android:host="activate" android:pathPattern=".*"/>
+                <data
+                    android:host="crystalexpress"
+                    android:scheme="crystalexpress" />
+                <data
+                    android:host="activate"
+                    android:pathPattern=".*"
+                    android:scheme="crystalexpress" />
             </intent-filter>
         </activity>
         <activity
@@ -61,24 +66,22 @@
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="com.intowow.crystalexpress.sectionsplash.SectionSplashActivity"
-            android:configChanges="orientation|screenSize"
+            android:name="com.intowow.crystalexpress.stream.streamhelper.SingleStreamHelperActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="com.intowow.crystalexpress.interstitialsplash.InterstitialSplashActivity"
-            android:configChanges="orientation|screenSize"
+            android:name="com.intowow.crystalexpress.stream.streamhelper.MultipleStreamHelperActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="com.intowow.crystalexpress.stream.StreamActivity"
+            android:name="com.intowow.crystalexpress.stream.defer.SingleDeferAdapterActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="com.intowow.crystalexpress.stream.PullToRefreshStreamActivity"
+            android:name="com.intowow.crystalexpress.stream.defer.MultipleDeferAdapterActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
@@ -98,6 +101,11 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="com.intowow.sdk.WebViewActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
 
         <receiver android:name="com.intowow.sdk.ScheduleReceiver" >

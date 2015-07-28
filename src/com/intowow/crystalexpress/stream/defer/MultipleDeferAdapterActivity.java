@@ -1,4 +1,4 @@
-package com.intowow.crystalexpress.cedemo;
+package com.intowow.crystalexpress.stream.defer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,15 +7,12 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.util.TypedValue;
@@ -23,34 +20,21 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.R;
-import com.intowow.crystalexpress.stream.defer.ExtendDeferStreamAdapter;
-import com.intowow.sdk.I2WAPI;
-import com.intowow.sdk.SplashAD;
-import com.intowow.sdk.SplashAD.SplashAdListener;
+import com.intowow.crystalexpress.cedemo.BaseActivity;
 
-/**
- * to let the SDK know the App status. (foreground or background)
- * you can let your activity extend BaseActivity simply.
- * */
-public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivity#
+public class MultipleDeferAdapterActivity extends BaseActivity {
 
 	//***********************************************
 	//	common UI
@@ -66,7 +50,6 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 	private int mActiveIndex = -1;
 	private int mDeferIndex = 0;
 	private int mScrollState = OnScrollListener.SCROLL_STATE_IDLE;
-	private Handler mHandler = null;
 	
 	public interface PagerEventListener {
 		public void onPageChanged(int pos);
@@ -78,110 +61,12 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 	/**you can setup placements for your section from the server*/
 	private final static String[] mPlacements = Config.STREAM_PLACEMENTS;
 	
-	//	interstitial ad 
-	//
-	//XXX@Interstitial-init@#Interstitial-init#
-	private final static String mInterstitialPlacement = Config.INTERSTITIAL_PLACEMENT;
-	private SplashAD mInterstitialSplashAd = null;
-	//end
-	private boolean mIsNeedLoadInterstitialAd = false;
-	public static final String KEY_LOAD_INTERSTITIAL_AD = "KEY_LOAD_INTERSTITIAL_AD";
-	
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		//	for splash ad,
-		//	you have to add this method in the activity,
-		//	remember to add the android:configChanges="orientation|screenSize" property
-		//	in the Androidanifest.xml
-		super.onConfigurationChanged(newConfig);
-	}
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(createContentView());
-		
-		mHandler = new Handler();
-		
-		//	after you come back from CEContentActivity
-		//	you can load the interstitial ad 
-		//
-		Bundle b = null;
-		if(getIntent()!=null){
-			b = this.getIntent().getExtras();
-		}else if(savedInstanceState!=null){
-			b = savedInstanceState;
-		}
-		
-		mIsNeedLoadInterstitialAd = isNeedLoadInterstitialAd(b);
-		
-		if(mIsNeedLoadInterstitialAd) {
-			b.remove(KEY_LOAD_INTERSTITIAL_AD);
-		}
 	}
 	
-	private boolean isNeedLoadInterstitialAd(Bundle bundle) {
-		if(bundle == null) {
-			return false;
-		}
-		
-		String keyLoadInterstitialAd =bundle.getString(KEY_LOAD_INTERSTITIAL_AD);
-		if(keyLoadInterstitialAd!=null && keyLoadInterstitialAd.equals("Y")){
-			return true;
-		}
-		
-		return false;
-	}
-	
-	private void loadInterstitialSplashAd() {
-		
-		//	in order not to effect the stream ad,
-		//	you can load the interstitial ad with postDelayed
-		//
-		if(mHandler == null) {
-			return;
-		}
-		mHandler.postDelayed(new Runnable() {
-
-			@Override
-			public void run() {
-				//	request the interstitial splash ad
-				//
-				//XXX@Interstitial-request@#Interstitial-request#
-				mInterstitialSplashAd = I2WAPI.requesSplashAD(CEStreamActivity.this, mInterstitialPlacement);
-				//end
-				
-				//XXX@Interstitial-setListener@#Interstitial-setListener#
-				if (mInterstitialSplashAd != null) {
-					//	this is a Non-Blocking calls
-					//
-					mInterstitialSplashAd.setListener(new SplashAdListener() {
-
-						@Override
-						public void onLoaded() {
-							mInterstitialSplashAd.show();
-						}
-
-						@Override
-						public void onLoadFailed() {
-						}
-
-						@Override
-						public void onClosed() {
-							//	be sure to release the splash ad here
-							//
-							mInterstitialSplashAd.release();
-						}
-					});
-				}
-				//end
-			}
-			
-		}, 1000);
-		
-
-	}
-
 	private View createContentView() {
 		LayoutManager lm = LayoutManager.getInstance(this);
 
@@ -250,7 +135,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		mPager.setLayoutParams(params);
 		mPager.setAdapter(mPagerAdapter);
 		mPager.setOnPageChangeListener(new OnPageChangeListener() {
-
+			//XXX@Stream-ViewPager-setActive@#Stream-ViewPager-setActive#
 			@Override
 			public void onPageScrollStateChanged(int state) {
 				mScrollState = state;
@@ -279,6 +164,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 					performDeferUpdate();
 				}
 			}
+			//end
 
 			@Override
 			public void onPageScrolled(int pos, float positionOffset,
@@ -316,17 +202,6 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 	public void onResume() {
 		super.onResume();
 		
-		//	load interstitial ad.
-		//	the "mIsNeedLoadInterstitialAd" flag is checked from onCreate().
-		//	if CEStreamActivity is launched by the CEContentActivity,
-		//	then this flag should be "true"
-		//
-		//XXX#Interstitial#
-		if(mIsNeedLoadInterstitialAd) {
-			mIsNeedLoadInterstitialAd = false;
-			loadInterstitialSplashAd();
-		}
-
 		if (mPagerAdapter != null) {
 			mPagerAdapter.resumeAd();
 		}
@@ -351,13 +226,6 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 			mPagerAdapter = null;
 		}
 		
-		//XXX@Interstitial-release@#Interstitial-release#
-		if (mInterstitialSplashAd != null) {
-			mInterstitialSplashAd.release();
-			mInterstitialSplashAd = null;
-		}
-		//end
-
 		if (mPager != null) {
 			mPager.setOnPageChangeListener(null);
 			mPager = null;
@@ -386,7 +254,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		public BreadcrumbView(Context context) {
 			super(context);
 
-			mlm = LayoutManager.getInstance(CEStreamActivity.this);
+			mlm = LayoutManager.getInstance(MultipleDeferAdapterActivity.this);
 
 			setBackgroundColor(Color.WHITE);
 			mContext = context;
@@ -602,7 +470,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 				// adapter
 				//
 				final ExtendDeferStreamAdapter adapter = new ExtendDeferStreamAdapter(
-						CEStreamActivity.this,
+						MultipleDeferAdapterActivity.this,
 						mPlacements[position],
 						mItems);
 
@@ -615,139 +483,31 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 				RelativeLayout.LayoutParams rParams = new RelativeLayout.LayoutParams(
 						RelativeLayout.LayoutParams.MATCH_PARENT,
 						RelativeLayout.LayoutParams.MATCH_PARENT);
-				final PullToRefreshListView pullToRefreshListView = new PullToRefreshListView(
-						CEStreamActivity.this);
-				pullToRefreshListView.setBackgroundColor(Color
-						.parseColor("#e7e7e7"));
-				pullToRefreshListView.setLayoutParams(rParams);
-				ListView inner = pullToRefreshListView.getRefreshableView();
-				inner.setDivider(null);
-				inner.setDividerHeight(0);
 				
-				pullToRefreshListView
-						.setOnRefreshListener(new OnRefreshListener<ListView>() {
-							@Override
-							public void onRefresh(
-									PullToRefreshBase<ListView> refreshView) {
-								String label = DateUtils.formatDateTime(
-										getApplicationContext(),
-										System.currentTimeMillis(),
-										DateUtils.FORMAT_SHOW_TIME
-												| DateUtils.FORMAT_SHOW_DATE
-												| DateUtils.FORMAT_ABBREV_ALL);
-
-								// Update the LastUpdatedLabel
-								refreshView.getLoadingLayoutProxy()
-										.setLastUpdatedLabel(label);
-
-								// Do work to refresh the list here.
-								//
-								if(mHandler != null) {
-									mHandler.postDelayed(
-											new RefreshList(pullToRefreshListView), 
-											2000);
-								}
-							}
-						});
-
-				pullToRefreshListView.setAdapter(adapter);
-
-				/**
-				 * 
-				 * important ! if you use PullToRefreshListView, the position
-				 * which callback by the listener will be shifted, so you should
-				 * additionally check OnItemClickListener and OnScrollListener
-				 * 
-				 * */
-				//XXX@Stream-OnItemClickListener@#Stream-OnItemClickListener#
-				//	if you use PullToRefresh library, 
-				//	then you should check the position offset 
-				//	in the scroll listener and item click listener
+				final ListView listView = new ListView(MultipleDeferAdapterActivity.this);
+				listView.setLayoutParams(rParams);
+				listView.setBackgroundColor(Color.parseColor("#e7e7e7"));
+				listView.setDivider(null);
+				listView.setDividerHeight(0);
+				
+				//	let the SDK know the scroll status
 				//
-				pullToRefreshListView
-						.setOnItemClickListener(new OnItemClickListener() {
-
-							@Override
-							public void onItemClick(AdapterView<?> parent,
-									View view, int position, long id) {
-								
-								final int FIRST_VISIBLE_ITEM_OFFSET = -1;
-								position = position + FIRST_VISIBLE_ITEM_OFFSET;
-
-								//	you should check is this position is ad first
-								//	then do your original logic later
-								//
-								if (adapter != null && adapter.isAd(position)) {
-									return;
-								}
-
-								// ...
-								// if you have already implemented this listener,
-								// add your original code here
-								// ...
-								
-								Intent intent = new Intent();
-								intent.setClass(CEStreamActivity.this, CEContentActivity.class);
-								startActivity(intent);
-								finish();
-
-							}
-						});
-				//end
+				listView.setOnScrollListener(adapter);
 				
-				//XXX@Stream-Pull-OnScrollListener@#Stream-Pull-OnScrollListener#
-				pullToRefreshListView
-						.setOnScrollListener(new OnScrollListener() {
-
-							@Override
-							public void onScrollStateChanged(AbsListView view,
-									int scrollState) {
-								// ...
-								// if you have already implemented this listener,
-								// add your original code here
-								// ...
-
-								if (adapter != null) {
-									adapter.onScrollStateChanged(view,
-											scrollState);
-								}
-							}
-
-							@Override
-							public void onScroll(AbsListView view,
-									int firstVisibleItem, int visibleItemCount,
-									int totalItemCount) {
-								// ...
-								// if you have already implemented this listener,
-								// add your original code here
-								// ...
-
-								if (adapter != null) {
-									final int FIRST_VISIBLE_ITEM_OFFSET = -1;
-									// pass the right position on to the SDK
-									//
-									adapter.onScroll(
-											view,
-											firstVisibleItem
-													+ FIRST_VISIBLE_ITEM_OFFSET,
-											visibleItemCount
-													+ FIRST_VISIBLE_ITEM_OFFSET,
-											totalItemCount);
-								}
-							}
-						});
-				//end
+				listView.setAdapter(adapter);
 				
-				canvas.addView(pullToRefreshListView);
+				canvas.addView(listView);
 			}
 
 			((ViewPager) collection).addView(canvas);
 
+			//XXX@Stream-ViewPager-init@#Stream-ViewPager-init#
 			if (mAdPos == position) {
 				// let the SDK know that this placement is active now
 				//
 				refreshAd(mAdPos);
 			}
+			//end
 
 			return canvas;
 		}
@@ -765,20 +525,5 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		startActivity(intent);
 		
 		finish();
-	}
-	
-	class RefreshList implements Runnable{
-		private PullToRefreshListView mListView = null;
-		
-		public RefreshList(PullToRefreshListView listView) {
-			mListView = listView;
-		}
-		
-		@Override
-		public void run() {
-			if(mListView != null) {
-				mListView.onRefreshComplete();
-			}
-		}
 	}
 }

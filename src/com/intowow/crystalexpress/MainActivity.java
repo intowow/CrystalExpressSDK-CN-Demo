@@ -9,9 +9,10 @@ import com.intowow.crystalexpress.cedemo.CEOpenSplashActivity;
 import com.intowow.crystalexpress.content.ContentActivity;
 import com.intowow.crystalexpress.flip.FlipActivity;
 import com.intowow.crystalexpress.opensplash.OpenSplashActivity;
-import com.intowow.crystalexpress.sectionsplash.SectionSplashActivity;
-import com.intowow.crystalexpress.stream.PullToRefreshStreamActivity;
-import com.intowow.crystalexpress.stream.StreamActivity;
+import com.intowow.crystalexpress.stream.defer.MultipleDeferAdapterActivity;
+import com.intowow.crystalexpress.stream.defer.SingleDeferAdapterActivity;
+import com.intowow.crystalexpress.stream.streamhelper.MultipleStreamHelperActivity;
+import com.intowow.crystalexpress.stream.streamhelper.SingleStreamHelperActivity;
 import com.intowow.sdk.I2WAPI;
 
 public class MainActivity extends Activity {
@@ -29,6 +30,10 @@ public class MainActivity extends Activity {
     	//	to initial the IntoWoW SDK
     	//
     	I2WAPI.init(this);
+    	
+    	//	Test Mode
+    	//
+    	//I2WAPI.init(this, true);
     }
     
     public void onResume() {
@@ -56,21 +61,27 @@ public class MainActivity extends Activity {
 		finish();
     }
     
-    public void onClickSectionSplash(View view) {
+    public void onClickStreamSingleDefer(View view) {
 		Intent intent = new Intent();
-		intent.setClass(this, SectionSplashActivity.class);
+		intent.setClass(this, SingleDeferAdapterActivity.class);
 		startActivity(intent);
     }
     
-    public void onClickStream(View view) {
+    public void onClickStreamMultipleDefer(View view) {
 		Intent intent = new Intent();
-		intent.setClass(this, StreamActivity.class);
+		intent.setClass(this, MultipleDeferAdapterActivity.class);
 		startActivity(intent);
     }
     
-    public void onClickPullToRefreshStream(View view) {
+    public void onClickSingleStreamHelper(View view) {
 		Intent intent = new Intent();
-		intent.setClass(this, PullToRefreshStreamActivity.class);
+		intent.setClass(this, SingleStreamHelperActivity.class);
+		startActivity(intent);
+    }
+    
+    public void onClickMultipStreamHelper(View view) {
+		Intent intent = new Intent();
+		intent.setClass(this, MultipleStreamHelperActivity.class);
 		startActivity(intent);
     }
     

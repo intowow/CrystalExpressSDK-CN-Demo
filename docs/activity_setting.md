@@ -23,19 +23,32 @@ I2WAPI.init(this);
 ```
 <p/>
 
-若你想使用測試廣告，則可改用下列方式初始SDK。
+若你想使用測試模式取得廣告，則可改用下列方式初始SDK。
 
 ```java
 I2WAPI.init(this, true);
 ```
 
-<span style='font-weight: bold;color:red'>註:若要還原成正式廣告，需把原本的測試應用程式移除。<span/>
+<span style='font-weight: bold;color:red'>
+註:I2WAPI.init(this, true)請在第一次呼叫時執行。
+<span/>
+<br/>
+<span style='font-weight: bold;color:red'>
+若您使用Demo App執行測試廣告，請直接修改MainActiviy.java的I2WAPI.init
+<span/>
+<br/>
+<span style='font-weight: bold;color:red'>
+若要還原成正式廣告，需把原本的測試應用程式移除。
+<br/>
+<span style='font-weight: bold;color:red'>
+同一隻手機上，不可有相同CrystalId的應用程式並存
+<span/>
 
 <h4 style='color:green'>應用程式前景判斷</h4>
 
 - 為了不影響應用程式的效能，SDK需準確地判斷應用程式當下是否為前景，並動態調整廣告下載策略
 - 請在每一隻`Activity`的`onResume()`與`onPause()`加上`I2WAPI.onActivityResume()`與`I2WAPI.onActivityPause()`
-- 為了整合方便，建議你也可考慮使用一支父`Activity`，實作如下程式碼，讓其他`Activity`繼承
+- 為了整合方便，建議你也可考慮使用一支[父Activity][BaseActivity]，實作如下程式碼，讓其他`Activity`繼承
 
 <p/>
 [程式範例][BaseActivity]
@@ -82,7 +95,7 @@ public void onPause() {
 - 若是應用程式有整合[開機蓋屏廣告](./opensplash)，請將`I2WAPI.onActivityResume()`加至[onStart()][I2WAPI-onStart]，`I2WAPI.onActivityPause()`加至[onStop()][I2WAPI-onStop]裡
 
 
-[I2WAPI-onStart]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L70 "CEOpenSplashActivity.java" 
-[I2WAPI-onStop]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L151 "CEOpenSplashActivity.java" 
-[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
-[BaseActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/cedemo/BaseActivity.java#L12 "BaseActivity.java" 
+[I2WAPI-onStart]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L70 "CEOpenSplashActivity.java" 
+[I2WAPI-onStop]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L158 "CEOpenSplashActivity.java" 
+[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
+[BaseActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/BaseActivity.java#L12 "BaseActivity.java" 

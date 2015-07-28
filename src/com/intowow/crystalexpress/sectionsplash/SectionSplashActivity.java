@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.AbsListView.OnScrollListener;
 
+import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
@@ -28,7 +29,7 @@ public class SectionSplashActivity extends Activity {
 	}
 	
 	private SplashAD mAd = null;
-	private String mPlacement = "SPLASH";
+	private String mPlacement = Config.SECTION_SPLASH_PLACEMENT;
 	
 	private int						mScrollState = OnScrollListener.SCROLL_STATE_IDLE;
 	private int						mActiveIndex = -1;

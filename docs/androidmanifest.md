@@ -8,8 +8,9 @@
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.SET_ORIENTATION" />
 ```
+
+---------------------------------------
 
 <h4 id='Activity' style='color:green'>Activity</h4>
 
@@ -21,9 +22,17 @@
 	android:launchMode="singleTask"
 	android:screenOrientation="portrait" >
 </activity>
+
+<activity
+    android:name="com.intowow.sdk.WebViewActivity"
+    android:configChanges="orientation|screenSize"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+</activity>
 ```
 
 <span style="color:red">註:若應用程式的`build target`低於13，你將需要移除`android:configChanges`屬性裡的`screenSize`</span>
+
+---------------------------------------
 
 <h4 id='Receiver' style='color:green'>Receiver</h4>
 
@@ -35,10 +44,25 @@
 </receiver>
 ```
 
+---------------------------------------
+
 <h4 id='meta-data' style='color:green'>Meta-Data</h4>
 
 ```xml
 <meta-data android:name="CRYSTAL_ID" android:value="Intowow提供的CRYSTAL_ID" />
 ```
+
+---------------------------------------
+
+<h4 id='meta-data' style='color:green'>預覽模式</h4>
+
+- 整合方式如下
+<br/>
+[預覽模式](../preview)
+
+---------------------------------------
+
+<br/>
+<br/>
 
 [TAG-AndroidManifest]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/AndroidManifest.xml "AndroidManifest.xml"

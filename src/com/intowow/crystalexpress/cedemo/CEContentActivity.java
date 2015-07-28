@@ -14,6 +14,7 @@ import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
@@ -43,8 +44,8 @@ public class CEContentActivity extends BaseActivity {
 	//************************************************
 	//	content and flip ad
 	//
-	private final static String mFlipPlacement = "FLIP";
-	private final static String mContentPlacement = "CONTENT";
+	private final static String mFlipPlacement = Config.FLIP_PLACEMENT;
+	private final static String mContentPlacement = Config.CONTENT_PLACEMENT;
 	private FlipADDeferHelper mFlipHelper = null;
 	private ContentPagerAdapter 	mPagerAdapter;
 

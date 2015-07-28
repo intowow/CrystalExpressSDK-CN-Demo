@@ -1,12 +1,15 @@
 ﻿<h3 id='content' style='color:red'>內文廣告</h3>
 
 - 內文廣告指文章內所加入的廣告
-- 本範例以`ScrollView`為主，若你使用的是`WebView`，可調整你的布局xml檔，將`WebView`包入`ScrollView`，如下示意
+- 為了在適當時機向SDK要求與啟動內文廣告，應用程式可加上範例程式所提供的[CrystalExpressScrollView][Content-scroll]類別
+- [CrystalExpressScrollView][Content-scroll]類別可設定`ScrollViewListener`，
+當滑動頁面時，會發出`onScrollChanged`回調，我們可在此回調判斷廣告位置，進一步向SDK要求與啟動廣告
+- 考量到一般內文的操作特性，是由上往下閱讀，本範例以`ScrollView`為主，若你使用的是`WebView`，可調整應用程式的布局xml檔，將`WebView`包入`ScrollView`，如下示意
 ```xml
 	<CrystalExpressScrollView>
 		<ViewGroup>
 			<WebView/>
-			<ContentAd>
+			<ContentAd/>
 		<ViewGroup/>
 	<CrystalExpressScrollView/>
 ```
@@ -23,7 +26,7 @@
 
 <codetag tag="Content-init"/>
 ```java
-private final static String mPlacement = "CONTENT";
+private final static String mPlacement = Config.CONTENT_PLACEMENT;
 private ContentHelper mContentHelper = null;
 
 ```
@@ -118,49 +121,51 @@ private void addAd(View contentAd) {
 
 - 生命週期處理
 
-`onResume()` ([程式範例][Content-onResume])
-
-<codetag tag="Content-onResume"/>
+<p/>[程式範例][Content-life]<p/>
+<codetag tag="Content-life" id="content_life"/>
 ```java
-if (mContentHelper != null) {
-	mContentHelper.start();
+@Override
+public void onResume() {
+	super.onResume();
+
+	if (mContentHelper != null) {
+		mContentHelper.start();
+	}
+}
+
+@Override
+public void onPause() {
+	super.onPause();
+
+	if (mContentHelper != null) {
+		mContentHelper.stop();
+	}
+}
+
+@Override
+public void onDestroy() {
+	super.onDestroy();
+
+	if (mContentHelper != null) {
+		mContentHelper.destroy();
+		mContentHelper = null;
+	}
+
 }
 ```
 <p/>
 
-`onPause()` ([程式範例][Content-onPause])
-
-<codetag tag="Content-onPause"/>
-```java
-if (mContentHelper != null) {
-	mContentHelper.stop();
-}
-```
-<p/>
-
-`onDestroy()` ([程式範例][Content-onDestroy])
-
-<codetag tag="Content-onDestroy"/>
-```java
-if (mContentHelper != null) {
-	mContentHelper.destroy();
-	mContentHelper = null;
-}
-```
-<p/>
  
  
 
 [activity_content.xml]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/res/layout/activity_content.xml "activity_content.xml"
-[Content-helper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentHelper.java#L10 "ContentHelper.java" 
-[Content-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentActivity.java#L25 "ContentActivity.java" 
-[Content-scroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/CrystalExpressScrollView.java#L8 "CrystalExpressScrollView.java" 
-[Content-inithelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentActivity.java#L129 "ContentActivity.java" 
-[Content-initscroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentActivity.java#L141 "ContentActivity.java" 
-[Content-load]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentActivity.java#L157 "ContentActivity.java" 
-[Content-activity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentActivity.java#L23 "ContentActivity.java" 
-[Content-requestAD]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentHelper.java#L66 "ContentHelper.java" 
-[Content-background]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentHelper.java#L124 "ContentHelper.java" 
-[Content-onResume]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentActivity.java#L176 "ContentActivity.java" 
-[Content-onPause]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentActivity.java#L188 "ContentActivity.java" 
-[Content-onDestroy]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master//src/com/intowow/crystalexpress/content/ContentActivity.java#L199 "ContentActivity.java" 
+[Content-helper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentHelper.java#L10 "ContentHelper.java" 
+[Content-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L26 "ContentActivity.java" 
+[Content-scroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/CrystalExpressScrollView.java#L8 "CrystalExpressScrollView.java" 
+[Content-inithelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L130 "ContentActivity.java" 
+[Content-initscroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L142 "ContentActivity.java" 
+[Content-load]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L158 "ContentActivity.java" 
+[Content-activity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L24 "ContentActivity.java" 
+[Content-requestAD]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentHelper.java#L66 "ContentHelper.java" 
+[Content-background]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentHelper.java#L124 "ContentHelper.java" 
+[Content-life]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L165 "ContentActivity.java" 
