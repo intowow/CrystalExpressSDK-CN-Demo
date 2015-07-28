@@ -29,7 +29,7 @@
 
 ﻿<h4 id='stream_placement' style='color:green;margin-bottom:15px'>準備廣告版位</h4>
 
-- 請先準備好[廣告版位](../naming/#placement)，一個列表只能綁定一個[廣告版位](../naming/#placement)
+- 請先準備好[廣告版位](./naming/#placement)，一個列表只能綁定一個[廣告版位](./naming/#placement)
 - 廣告版位可直接宣告至應用程式裡，或是由呼叫伺服器來取得，以增加擴充性
 
 <p/>
