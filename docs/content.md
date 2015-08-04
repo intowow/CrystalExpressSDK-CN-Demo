@@ -20,6 +20,9 @@
 
 <p/>[程式範例][Content-activity]<p/>
 
+- 讓Activity繼承[BaseActivity](./activity_setting)<p/>
+<p/>
+
 - 加入[CrystalExpressScrollView][Content-scroll]與[ContentHelper.java][Content-helper]
 
 - 在`Activity`裡宣告變數 ([程式範例][Content-init])
@@ -160,12 +163,12 @@ public void onDestroy() {
 
 [activity_content.xml]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/res/layout/activity_content.xml "activity_content.xml"
 [Content-helper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentHelper.java#L10 "ContentHelper.java" 
-[Content-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L26 "ContentActivity.java" 
+[Content-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L25 "ContentActivity.java" 
 [Content-scroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/CrystalExpressScrollView.java#L8 "CrystalExpressScrollView.java" 
-[Content-inithelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L130 "ContentActivity.java" 
-[Content-initscroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L142 "ContentActivity.java" 
-[Content-load]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L158 "ContentActivity.java" 
-[Content-activity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L24 "ContentActivity.java" 
+[Content-inithelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L129 "ContentActivity.java" 
+[Content-initscroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L141 "ContentActivity.java" 
+[Content-load]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L157 "ContentActivity.java" 
+[Content-activity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L23 "ContentActivity.java" 
 [Content-requestAD]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentHelper.java#L66 "ContentHelper.java" 
 [Content-background]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentHelper.java#L124 "ContentHelper.java" 
-[Content-life]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L165 "ContentActivity.java" 
+[Content-life]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/content/ContentActivity.java#L164 "ContentActivity.java" 

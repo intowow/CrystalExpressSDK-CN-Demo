@@ -35,12 +35,12 @@ import android.widget.TextView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.R;
-import com.intowow.crystalexpress.cedemo.BaseActivity;
 import com.intowow.sdk.StreamHelper;
 
 public class MultipleStreamHelperActivity extends BaseActivity{
@@ -638,8 +638,7 @@ public class MultipleStreamHelperActivity extends BaseActivity{
 											view,
 											firstVisibleItem
 													+ FIRST_VISIBLE_ITEM_OFFSET,
-											visibleItemCount
-													+ FIRST_VISIBLE_ITEM_OFFSET,
+											visibleItemCount,
 											totalItemCount);
 								}
 							}

@@ -22,12 +22,12 @@
 			</td>
 			<td>
 				<ul>
-					<li>請確認網路狀態，通常在wifi環境下才會下載視頻廣告</li>
+					<li>請確認網路狀態，在wifi環境下才會下載視頻廣告</li>
 					<li>同一隻手機上，不可有相同CrystalId的應用程式並存</li>
 					<li>若操作過程想替換CrystalId，請移除應用程式，設定好AndroidManifest.xml後，再安裝測試</li>
 					<li>若網速較慢，有可能是廣告素材還未下載完成</li>
 					<li>請確認<a target="_blank" href="../naming/#placement">廣告版位名稱</a></li>
-					<li>請確認<a target="_blank" href="../activity_setting">Activity設定</a></li>
+					<li>請確認<a target="_blank" href="../activity_setting">Activity設定</a>，讓Activity繼承BaseActivity</li>
 					<li>該版位的廣告可能處於<a target="_blank" href="https://github.com/roylo/CrystalExpressDocumentation-iOS-zh_CN/blob/master/terminology.md/#user-content-ad-serving-control-廣告投放控制">廣告投放控制狀態</a>，可於後台修改</li>
 				</ul>
 			</td>

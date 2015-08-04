@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
-import com.intowow.crystalexpress.cedemo.BaseActivity;
 import com.intowow.sdk.StreamHelper;
 
 /**

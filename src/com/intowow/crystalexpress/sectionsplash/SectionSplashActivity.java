@@ -3,13 +3,13 @@ package com.intowow.crystalexpress.sectionsplash;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.AbsListView.OnScrollListener;
 
+import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
@@ -22,7 +22,7 @@ import com.intowow.sdk.SplashAD.SplashAdListener;
  * you can use the SplashAD to pop-up the section splash ad.
  * 
  * */
-public class SectionSplashActivity extends Activity {
+public class SectionSplashActivity extends BaseActivity {
 	
 	public interface PagerEventListener {
 		public void onPageChanged(int pos);
@@ -60,26 +60,6 @@ public class SectionSplashActivity extends Activity {
 		createUI();
 	}
 	
-	@Override
-	public void onStart() {
-		super.onStart();
-		
-		//	init the SDK in the onStart()
-		//
-		I2WAPI.init(this);
-		
-		//	if you use splash ad, you can use onActivityResume()
-		//	in the onStart() instead of onResume()
-		//
-		I2WAPI.onActivityResume(this);
-	}
-	
-	@Override
-	public void onStop() {
-		super.onStop();
-		I2WAPI.onActivityPause(this);
-	}
-	
 	/**
 	 * you can request the section splash ad here
 	 * after the menu has be selected
@@ -96,7 +76,7 @@ public class SectionSplashActivity extends Activity {
 
 				@Override
 				public void onLoaded() {
-					mAd.show();
+					mAd.show(R.anim.slide_in_from_bottom, R.anim.no_animation);
 				}
 
 				@Override

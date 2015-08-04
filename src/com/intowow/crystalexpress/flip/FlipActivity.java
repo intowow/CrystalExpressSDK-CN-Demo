@@ -3,7 +3,6 @@ package com.intowow.crystalexpress.flip;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.MotionEvent;
@@ -12,14 +11,14 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
 
+import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
-import com.intowow.sdk.I2WAPI;
 import com.intowow.sdk.FlipADDeferHelper;
 
-public class FlipActivity extends Activity {//XXX#Flip-activity#
+public class FlipActivity extends BaseActivity {//XXX#Flip-activity#
 	
 	//**************************************
 	//	common UI
@@ -73,17 +72,9 @@ public class FlipActivity extends Activity {//XXX#Flip-activity#
 	}
 	
 	@Override
-	public void onStart() {
-		super.onStart();
-		
-		I2WAPI.init(this);
-	}
-	
-	@Override
 	public void onResume() {
 		super.onResume();
 		
-		I2WAPI.onActivityResume(this);
 		//XXX@Flip-onResume@#Flip-onResume#
 		if(mFlipHelper != null) {
 			mFlipHelper.onStart();
@@ -95,7 +86,6 @@ public class FlipActivity extends Activity {//XXX#Flip-activity#
 	public void onPause() {
 		super.onPause();
 		
-		I2WAPI.onActivityPause(this);
 		//XXX@Flip-onPause@#Flip-onPause#
 		if(mFlipHelper != null) {
 			mFlipHelper.onStop();

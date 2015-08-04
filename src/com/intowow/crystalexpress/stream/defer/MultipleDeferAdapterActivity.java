@@ -27,12 +27,12 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.R;
-import com.intowow.crystalexpress.cedemo.BaseActivity;
 
 public class MultipleDeferAdapterActivity extends BaseActivity {
 

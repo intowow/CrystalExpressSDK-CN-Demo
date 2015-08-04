@@ -13,13 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
-import com.intowow.crystalexpress.cedemo.BaseActivity;
 import com.intowow.crystalexpress.content.CrystalExpressScrollView.ScrollViewListener;
-import com.intowow.sdk.I2WAPI;
 
 public class ContentActivity extends BaseActivity {//XXX#Content-activity#
 

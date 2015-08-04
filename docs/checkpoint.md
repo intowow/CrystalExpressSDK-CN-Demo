@@ -11,7 +11,7 @@
 				Activity前景與背景
 			</td>
 			<td>
-				<a target="_blank" href="../activity_setting">每隻Activity均在onResume()與onPause()加上I2WAPI.onActivityResume()與I2WAPI.onActivityPause()</a>
+				<a target="_blank" href="../activity_setting">確認每隻Activity繼承BaseActivity</a>
 			</td>
 		</tr>
 		<tr>
@@ -33,7 +33,7 @@
 					<li><a target="_blank" href="../stream/#stream_scroll_status">上下滑動列表後，可於SCROLL_STATE_IDLE的狀態下撥放視頻</a></li>
 					<li><a target="_blank" href="../stream/#stream_active">左右切換列表後，可於SCROLL_STATE_IDLE的狀態下撥放視頻</a></li>
 					<li><a target="_blank" href="../stream/#stream_notify">當列表刷新資料時，廣告可正確安插至原位置，且不會覆蓋新資料</a></li>
-					<li><a target="_blank" href="../stream/#stream_activity">退出應用程式可正常暫停視頻</a></li>
+					<li><a target="_blank" href="../stream/#stream_activity">開啟視頻音樂後，按HOME退出應用程式時，可正常暫停視頻</a></li>
 				</ul>
 			</td>
 		</tr>

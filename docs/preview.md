@@ -23,21 +23,7 @@
 </intent-filter>
 ```
 
-- 在起始`Activity`的`onCreate()`中加上[I2WAPI.init()][I2WAPI-init]。SDK將處理`Bundle`，進入廣告預覽模式
-
-<codetag tag="I2WAPI-init"/>
-```java
-//	init the SDK.
-//
-//	you can call this API only once in your launch flow.
-//
-//	if you need to start the preview mode, 
-//	please passing the activity(not ApplicationContext) on to the parameter
-//	and the SDK will parsing the intent to launch the preview mode.
-//
-I2WAPI.init(this);
-```
-<p/>
+- 讓起始`Activity`繼承[BaseActivity][BaseActivity]。SDK將處理`Bundle`，進入廣告預覽模式
 
 
 <span style='font-weight: bold;color:red'>你需提供應用程式的`scheme`給Intowow後台設定<span/>
@@ -60,5 +46,5 @@ I2WAPI.init(this);
 	- 下載完廣告過程中請不要刷掉或強制停止應用程式
 6. 若要取消預覽模式，需強制停止應用程式
 
-[I2WAPI-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L46 "CEOpenSplashActivity.java" 
+[BaseActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/BaseActivity.java#L12 "BaseActivity.java" 
 [TAG-AndroidManifest]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/AndroidManifest.xml "AndroidManifest.xml"
