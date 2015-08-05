@@ -65,7 +65,16 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center">1.1.34(<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.34.jar">下載</a>)</td><td align="center">2015/08/04</td>
+			<td align="center">1.1.35(<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.35.jar">下載</a>)</td><td align="center">2015/08/06</td>
+			<td>
+				<ul>
+					<li>更新SDK內部功能</li>
+					<li>修正SDK內部Bug</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">1.1.34</td><td align="center">2015/08/04</td>
 			<td>
 				<ul>
 					<li>修改WIFI提示</li>

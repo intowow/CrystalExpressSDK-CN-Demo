@@ -70,7 +70,15 @@ mAd = I2WAPI.requesSingleOfferAD(CEOpenSplashActivity.this, "OPEN_SPLASH");
 <p/>
 
 <span style='font-weight: bold;color:red'>
-註:呼叫requesSingleOfferAD的時機點請在用戶看到應用程式LOGO之後，
+註:
+</span>
+<br/>
+<span style='font-weight: bold;color:red'>
+1.呼叫requesSingleOfferAD的時機點，請在用戶看到應用程式LOGO之後
+</span>
+<br/>
+<span style='font-weight: bold;color:red'>
+2.建議讓LOGO等待約1秒再開啟廣告，以達較佳用戶體驗，
 效果如下
 </span>
 <br/><br/>
