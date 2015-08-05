@@ -115,7 +115,7 @@ public class CEOpenSplashActivity extends BaseActivity {//XXX#OpenSplash#
 		//	this sample code lets the user see the LOGO first
 		//	then to request a open splash ad later
 		//
-		mHandler.postDelayed(mShowLogoRunnable, 3000);
+		mHandler.postDelayed(mShowLogoRunnable, 800);
 	}
 	
 	@Override
