@@ -73,6 +73,7 @@ public class BaseActivity extends Activity{//XXX#BaseActivity#
 			mHasResume = true;
 			I2WAPI.onActivityResume(this);
 		}
+		mHasPause = false;
 	}
 	
 	/**
@@ -84,5 +85,6 @@ public class BaseActivity extends Activity{//XXX#BaseActivity#
 			mHasPause = true;
 			I2WAPI.onActivityPause(this);
 		}
+		mHasResume = false;
 	}
 }
