@@ -13,9 +13,9 @@
 - 請將下列函式庫加入到應用程式的src/libs目錄裡
 <p/>
 <sdklink/>
-	- [intowowsdk.1.1.35.jar](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.35.jar)
+	- [intowowsdk.1.1.39.jar](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.39.jar)
 <p/>
-	- [android-support-v4.jar](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.26.jar)
+	- [android-support-v4.jar](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/android-support-v4.jar)
 
 	
 <h4 id='import' style='color:green'>範例程式</h4>
