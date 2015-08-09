@@ -65,15 +65,26 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center">1.1.39(<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.39.jar">下載</a>)</td><td align="center">2015/08/07</td>
+			<td align="center">1.1.40(<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.40.jar">下載</a>)</td><td align="center">2015/08/09</td>
 			<td>
 				<ul>
-					<li>修正SDK內部Bug</li>
+					<li>信息流廣告支援去除背景功能</li>
 				</ul>
 			</td>
 		</tr>
 		<tr>
-			<td align="center">1.1.35</td><td align="center">2015/08/06</td>
+			<td  align="center">
+				<ul>
+					<li>1.1.39</li>
+					<li>1.1.35</li>
+				</ul>
+			</td>
+			<td align="center">
+				<ul>
+					<li>2015/08/07</li>
+					<li>2015/08/06</li>
+				</ul>
+			</td>
 			<td>
 				<ul>
 					<li>更新SDK內部功能</li>
