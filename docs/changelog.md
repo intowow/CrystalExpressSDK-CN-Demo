@@ -80,7 +80,7 @@
 				</ul>
 			</td>
 			<td align="center">
-				<ul>
+				<ul> 
 					<li>2015/08/07</li>
 					<li>2015/08/06</li>
 				</ul>
