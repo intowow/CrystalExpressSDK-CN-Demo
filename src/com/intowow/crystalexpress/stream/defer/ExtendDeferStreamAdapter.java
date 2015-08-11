@@ -97,6 +97,10 @@ public class ExtendDeferStreamAdapter extends DeferStreamAdapter {//XXX#Stream-D
 		//	final View adView =  getAD(position, someIntWidth);
 		//
 		
+		//	or remove the background
+		//	final View adView =  getAD(position, false);
+		//
+		
 		if(adView != null) {
 			//	you can set the background
 			//	such as

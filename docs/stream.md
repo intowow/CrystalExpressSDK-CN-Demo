@@ -530,6 +530,10 @@ final View adView =  getAD(position);
 //	final View adView =  getAD(position, someIntWidth);
 //
 
+//	or remove the background
+//	final View adView =  getAD(position, false);
+//
+
 if(adView != null) {
 	//	you can set the background
 	//	such as
@@ -646,7 +650,7 @@ public void onDestroy() {
 [Stream-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L32 "SingleDeferAdapterActivity.java" 
 [Stream-onScroll-defer]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L77 "SingleDeferAdapterActivity.java" 
 [Stream-onScroll]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L114 "SingleDeferAdapterActivity.java" 
-[Stream-notifyDataSetChanged]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/ExtendDeferStreamAdapter.java#L224 "ExtendDeferStreamAdapter.java" 
+[Stream-notifyDataSetChanged]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/ExtendDeferStreamAdapter.java#L228 "ExtendDeferStreamAdapter.java" 
 [Stream-StreamHelper-notifyDataSetChanged]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/StreamHelperAdapter.java#L70 "StreamHelperAdapter.java" 
 [Stream-getItemViewType]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/ExtendDeferStreamAdapter.java#L72 "ExtendDeferStreamAdapter.java" 
 [Stream-StreamHelper-getItemViewType]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/StreamHelperAdapter.java#L99 "StreamHelperAdapter.java" 
@@ -654,16 +658,16 @@ public void onDestroy() {
 [Stream-StreamHelper-getView]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/StreamHelperAdapter.java#L118 "StreamHelperAdapter.java" 
 [Stream-StreamHelper-active]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/MultipleStreamHelperActivity.java#L431 "MultipleStreamHelperActivity.java" 
 [Stream-active]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L69 "SingleDeferAdapterActivity.java" 
-[Stream-ViewPager-setActive]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/MultipleDeferAdapterActivity.java#L138 "MultipleDeferAdapterActivity.java" 
-[Stream-ViewPager-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/MultipleDeferAdapterActivity.java#L504 "MultipleDeferAdapterActivity.java" 
+[Stream-ViewPager-setActive]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/MultipleDeferAdapterActivity.java#L143 "MultipleDeferAdapterActivity.java" 
+[Stream-ViewPager-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/MultipleDeferAdapterActivity.java#L511 "MultipleDeferAdapterActivity.java" 
 [Stream-defer-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L62 "SingleDeferAdapterActivity.java" 
 [Stream-StreamHelper-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L83 "SingleStreamHelperActivity.java" 
 [Stream-onScroll-StreamHelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L140 "SingleStreamHelperActivity.java" 
-[Stream-onADLoaded]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/ExtendDeferStreamAdapter.java#L180 "ExtendDeferStreamAdapter.java" 
+[Stream-onADLoaded]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/ExtendDeferStreamAdapter.java#L184 "ExtendDeferStreamAdapter.java" 
 [Stream-StreamHelper-onADLoaded]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L87 "SingleStreamHelperActivity.java" 
 [Stream-life]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L154 "SingleDeferAdapterActivity.java" 
 [Stream-StreamHelper-life]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L160 "SingleStreamHelperActivity.java" 
-[Stream-OnItemClickListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L663 "CEStreamActivity.java" 
-[Stream-Pull-OnScrollListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L699 "CEStreamActivity.java" 
+[Stream-OnItemClickListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L670 "CEStreamActivity.java" 
+[Stream-Pull-OnScrollListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L706 "CEStreamActivity.java" 
 [Stream-setOnItemClickListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L85 "SingleDeferAdapterActivity.java" 
 [Stream-CEStreamActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L54 "CEStreamActivity.java" 

@@ -57,7 +57,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 	//	common UI
 	//
 	private final static int ITEM_SIZE = 200;
-	private List<Object> mItems = new ArrayList<Object>(ITEM_SIZE);
+	private List<List<Object>> mItems = new ArrayList<List<Object>>(ITEM_SIZE);
 	private RelativeLayout mTitleLayout = null;
 	private BreadcrumbView mBreadcrumbView = null;
 	private ArrayList<String> mSections;
@@ -188,8 +188,13 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 
 		// list view simulate data
 		//
-		for (int i = 0; i < ITEM_SIZE; i++) {
-			mItems.add(new Object());
+		List<Object> obj = null;
+		for(int i = 0 ; i < mPlacements.length; i++) {
+			obj = new ArrayList<Object>();
+			for (int j = 0; j < ITEM_SIZE; j++) {
+				obj.add(new Object());
+			}
+			mItems.add(obj);
 		}
 		
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
@@ -598,6 +603,8 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 				canvas = new RelativeLayout(mContext);
 				canvas.setLayoutParams(params);
 				mCanvas.put(position, canvas);
+				
+				final List<Object> items = mItems.get(position);
 
 				//	XXX
 				// adapter
@@ -605,7 +612,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 				final ExtendDeferStreamAdapter adapter = new ExtendDeferStreamAdapter(
 						CEStreamActivity.this,
 						mPlacements[position],
-						mItems);
+						items);
 
 				// put the adapter
 				//
