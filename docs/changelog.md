@@ -16,6 +16,14 @@
 	</thead>
 	<tbody>
 		<tr>
+			<td align="center">5.0</td><td align="center">2015/08/14</td>
+			<td>
+				<ul>
+					<li>修改<a target="_blank" href="../adevent">廣告曝光與點擊事件的回調機制</a>onAdClick介面</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
 			<td align="center">4.0</td><td align="center">2015/08/04</td>
 			<td>
 				<ul>
@@ -23,7 +31,6 @@
 					<li>修改<a target="_blank" href="../opensplash">開機蓋屏</a>整合說明</li>
 					<li>修改<a target="_blank" href="../checkpoint">檢查要點</a></li>
 				</ul>
-				
 			</td>
 		</tr>
 		<tr>
@@ -65,7 +72,15 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center">1.1.40(<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.40.jar">下載</a>)</td><td align="center">2015/08/09</td>
+			<td align="center">1.1.41(<a target="_blank" href="../before#import">下載</a>)</td><td align="center">2015/08/14</td>
+			<td>
+				<ul>
+					<li>更新SDK內部功能</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">1.1.40</td><td align="center">2015/08/09</td>
 			<td>
 				<ul>
 					<li>信息流廣告支援去除背景功能</li>

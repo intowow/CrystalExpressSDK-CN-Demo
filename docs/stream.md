@@ -385,6 +385,19 @@ pullToRefreshListView
 - 若位置回傳`-1`，代表應用程式不需要此廣告
 - 若應用程式使用`StreamHelper`，而不是`DeferStreamAdapter`，請確認設定`onADLoaded()`在`ListView.setAdapter`之前
 
+<span style='font-weight: bold;color:red'>
+註:
+</span>
+<br/>
+<span style='font-weight: bold;color:red'>
+若應用程式使用StreamHelper，而不是DeferStreamAdapter，請確認設定onADLoaded()回調前，adapter已事先設定好數據，
+</span>
+<br/>
+<span style='font-weight: bold;color:red'>
+讓adapter.getCount() > 0
+</span>
+<br/>
+
 [範例程式-StreamHelper][Stream-StreamHelper-onADLoaded]
 <p/>
 [範例程式-DeferStreamAdapter][Stream-onADLoaded]
@@ -415,7 +428,7 @@ public int onADLoaded(int position) {
 
 	position = getDefaultMinPosition(position);
 
-	if (mList.size() >  position) {	
+	if (mList != null && mList.size() >  position) {	
 
 		// just allocate one position for stream ad
 		//
@@ -462,7 +475,7 @@ public void notifyDataSetChanged() {
 	//	which you have added in the DataSet before
 	//
 	for (Integer pos : getAddedPosition()) {
-		if(pos > mList.size()) {
+		if(mList == null || pos > mList.size()) {
 			return;
 		}
 
@@ -662,11 +675,11 @@ public void onDestroy() {
 [Stream-ViewPager-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/MultipleDeferAdapterActivity.java#L511 "MultipleDeferAdapterActivity.java" 
 [Stream-defer-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L62 "SingleDeferAdapterActivity.java" 
 [Stream-StreamHelper-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L83 "SingleStreamHelperActivity.java" 
-[Stream-onScroll-StreamHelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L140 "SingleStreamHelperActivity.java" 
+[Stream-onScroll-StreamHelper]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L142 "SingleStreamHelperActivity.java" 
 [Stream-onADLoaded]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/ExtendDeferStreamAdapter.java#L184 "ExtendDeferStreamAdapter.java" 
 [Stream-StreamHelper-onADLoaded]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L87 "SingleStreamHelperActivity.java" 
 [Stream-life]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L154 "SingleDeferAdapterActivity.java" 
-[Stream-StreamHelper-life]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L160 "SingleStreamHelperActivity.java" 
+[Stream-StreamHelper-life]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/streamhelper/SingleStreamHelperActivity.java#L162 "SingleStreamHelperActivity.java" 
 [Stream-OnItemClickListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L670 "CEStreamActivity.java" 
 [Stream-Pull-OnScrollListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L706 "CEStreamActivity.java" 
 [Stream-setOnItemClickListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/stream/defer/SingleDeferAdapterActivity.java#L85 "SingleDeferAdapterActivity.java" 

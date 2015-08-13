@@ -189,12 +189,12 @@ public class StreamHelperAdapter extends BaseAdapter {
 	
 	@Override
 	public int getCount() {
-		return mList.size();
+		return mList != null ? mList.size() : 0;
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return mList.get(position);
+		return mList != null ? mList.get(position) : null;
 	}
 
 	@Override

@@ -25,8 +25,9 @@ private ADEventListener mADEventListener = null;
 if(mADEventListener == null) {
 	mADEventListener = new ADEventListener() {
 		@Override
-		public void onAdClick(final String adId) {
-			//	get click event here
+		public void onAdClick(final String adId, final String clickUrl) {
+			//	get click event here.
+			//	the clickUrl may be null
 			//
 		}
 		

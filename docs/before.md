@@ -12,23 +12,105 @@
 
 - 請將下列函式庫加入到應用程式的src/libs目錄裡
 <p/>
-<sdklink/>
-	- [intowowsdk.1.1.40.jar](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/intowowsdk.1.1.40.jar)
+
+
+<table border="1">
+	<thead>
+		<tr>
+			<td align="center" style='color:green'>區域</td><td align="center" style='color:green'>函式庫</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td align="center">中國大陸</td>
+			<td>
+				<ul>
+					<li id="sdklink_cn">
+			<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/cn/intowowsdk-cn.1.1.41.jar">intowowsdk-cn.1.1.41.jar</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/android-support-v4.jar">android-support-v4.jar</a>
+					</li>
+				</ul>
+				
+			</td>
+		</tr>
+		<tr>
+			<td align="center">全球</td>
+			<td>
+				<ul>
+					<li id="sdklink_global">
+			<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/global/intowowsdk-global.1.1.41.jar">intowowsdk-global.1.1.41.jar</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/global/android-support-v4.jar">android-support-v4.jar</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/global/aws-android-sdk-core-2.2.1.jar">aws-android-sdk-core-2.2.1.jar</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/global/aws-android-sdk-cognito-2.2.1.jar">aws-android-sdk-cognito-2.2.1.jar</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/global/aws-android-sdk-kinesis-2.2.1.jar">aws-android-sdk-kinesis-2.2.1.jar</a>
+					</li>
+				</ul>
+				
+			</td>
+		</tr>
+	</tbody>
+</table>
 <p/>
-	- [android-support-v4.jar](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/android-support-v4.jar)
 
 	
 <h4 id='import' style='color:green'>範例程式</h4>
 
 - 整合過程中，你可隨時參考範例程式
 <p/>
-<a target="_blank" href="https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo.git">
-網頁連結
-</a>
+
+
+<table border="1">
+	<thead>
+		<tr>
+			<td align="center" style='color:green'>區域</td><td align="center" style='color:green'>連結</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td align="center">中國大陸</td>
+			<td>
+				<ul>
+					<li>
+						<a target="_blank" href="https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo.git">網頁連結</a>
+					</li>
+					<li>
+						<a href="https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/archive/master.zip">下載連結</a>
+					</li>
+				</ul>
+				
+			</td>
+		</tr>
+		<tr>
+			<td align="center">全球</td>
+			<td>
+				<ul>
+					<li>
+						<a target="_blank" href="https://github.com/ddad-daniel/CrystalExpressSDK-Global-Demo.git">網頁連結</a>
+					</li>
+					<li>
+						<a href="https://github.com/ddad-daniel/CrystalExpressSDK-Global-Demo/archive/master.zip">下載連結</a>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p/>
+
+
+
 <br/>
-<a href="https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/archive/master.zip">
-下載連結
-</a>
+
 
 <h4 id='import' style='color:green'>需求與限制</h4>
 - SDK最低支援Android 2.2以上的手機

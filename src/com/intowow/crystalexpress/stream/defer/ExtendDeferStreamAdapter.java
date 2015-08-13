@@ -165,12 +165,12 @@ public class ExtendDeferStreamAdapter extends DeferStreamAdapter {//XXX#Stream-D
 	
 	@Override
 	public int getCount() {
-		return mList.size();
+		return mList != null ? mList.size() : 0;
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return mList.get(position);
+		return mList != null ? mList.get(position) : null;
 	}
 
 	@Override
@@ -207,7 +207,7 @@ public class ExtendDeferStreamAdapter extends DeferStreamAdapter {//XXX#Stream-D
 		
 		position = getDefaultMinPosition(position);
 		
-		if (mList.size() >  position) {	
+		if (mList != null && mList.size() >  position) {	
 			
 			// just allocate one position for stream ad
 			//
@@ -233,7 +233,7 @@ public class ExtendDeferStreamAdapter extends DeferStreamAdapter {//XXX#Stream-D
 		//	which you have added in the DataSet before
 		//
 		for (Integer pos : getAddedPosition()) {
-			if(pos > mList.size()) {
+			if(mList == null || pos > mList.size()) {
 				return;
 			}
 			

@@ -20,11 +20,11 @@ public class BaseActivity extends Activity{//XXX#BaseActivity#
 		
 		//	init the SDK.
 		//
-		I2WAPI.init(this);
+		//I2WAPI.init(this);
 		
     	//	Test Mode
     	//
-		//I2WAPI.init(this, true);
+		I2WAPI.init(this, true);
 	}
 	
 	@Override 

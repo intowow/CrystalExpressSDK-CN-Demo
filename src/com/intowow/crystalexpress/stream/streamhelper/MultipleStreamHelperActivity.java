@@ -512,7 +512,9 @@ public class MultipleStreamHelperActivity extends BaseActivity{
 							// just allocate one position for stream ad
 							//
 							items.add(position, null);
-							adapter.notifyDataSetChanged();
+							if(adapter != null) {
+								adapter.notifyDataSetChanged();
+							}
 							return position;
 						}
 						else {				

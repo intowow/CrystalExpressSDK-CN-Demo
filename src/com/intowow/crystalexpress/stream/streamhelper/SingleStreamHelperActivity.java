@@ -110,7 +110,9 @@ public class SingleStreamHelperActivity extends BaseActivity {//TODO extends Bas
 					// just allocate one position for stream ad
 					//
 					mItems.add(position, null);
-					mStreamHelperAdapter.notifyDataSetChanged();
+					if(mStreamHelperAdapter != null) {
+						mStreamHelperAdapter.notifyDataSetChanged();
+					}
 					return position;
 				}
 				else {				
