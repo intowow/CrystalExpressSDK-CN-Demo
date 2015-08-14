@@ -160,18 +160,25 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 
 						@Override
 						public void onLoaded() {
-							mInterstitialSplashAd.show();
+							if(mInterstitialSplashAd != null) {
+								mInterstitialSplashAd.show(R.anim.slide_in_from_bottom, R.anim.no_animation);
+							}
 						}
 
 						@Override
 						public void onLoadFailed() {
+							if(mInterstitialSplashAd != null) {
+								mInterstitialSplashAd.release();
+							}
 						}
 
 						@Override
 						public void onClosed() {
 							//	be sure to release the splash ad here
 							//
-							mInterstitialSplashAd.release();
+							if(mInterstitialSplashAd != null) {
+								mInterstitialSplashAd.release();
+							}
 						}
 					});
 				}

@@ -70,18 +70,25 @@ if (mInterstitialSplashAd != null) {
 
 		@Override
 		public void onLoaded() {
-			mInterstitialSplashAd.show();
+			if(mInterstitialSplashAd != null) {
+				mInterstitialSplashAd.show(R.anim.slide_in_from_bottom, R.anim.no_animation);
+			}
 		}
 
 		@Override
 		public void onLoadFailed() {
+			if(mInterstitialSplashAd != null) {
+				mInterstitialSplashAd.release();
+			}
 		}
 
 		@Override
 		public void onClosed() {
 			//	be sure to release the splash ad here
 			//
-			mInterstitialSplashAd.release();
+			if(mInterstitialSplashAd != null) {
+				mInterstitialSplashAd.release();
+			}
 		}
 	});
 }
@@ -98,9 +105,9 @@ if (mInterstitialSplashAd != null) {
 ```
 <p/>
 
-[Interstitial-release]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L360 "CEStreamActivity.java" 
+[Interstitial-release]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L367 "CEStreamActivity.java" 
 [OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L56 "CEOpenSplashActivity.java" 
-[Interstitial]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L330 "CEStreamActivity.java" 
+[Interstitial]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L337 "CEStreamActivity.java" 
 [Interstitial-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L84 "CEStreamActivity.java" 
 [Interstitial-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L151 "CEStreamActivity.java" 
 [Interstitial-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L155 "CEStreamActivity.java" 
