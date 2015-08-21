@@ -8,6 +8,14 @@
 
 <h4 id='interstitialsplash-1' style='color:green'>整合步驟</h4>
 
+<span style='font-weight: bold;color:red'>
+註:
+</span>
+<span style='font-weight: bold;color:red'>
+若整合後看不到廣告，請參考<a target="_blank" href="../faq">問題集</a>
+</span>
+<br/>
+
 - 讓Activity繼承[BaseActivity](./activity_setting)<p/>
 <p/>
 
@@ -104,6 +112,8 @@ if (mInterstitialSplashAd != null) {
 }
 ```
 <p/>
+
+- 整合完成後，請參考<a target="_blank" href="../checkpoint">檢查要點</a>
 
 [Interstitial-release]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L367 "CEStreamActivity.java" 
 [OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L56 "CEOpenSplashActivity.java" 

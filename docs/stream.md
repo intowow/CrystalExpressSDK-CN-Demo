@@ -10,15 +10,18 @@
 
 ---------------------------------------
 
+<span style='font-weight: bold;color:red'>
+註:
+</span>
+<span style='font-weight: bold;color:red'>
+若整合後看不到廣告，請參考<a target="_blank" href="../faq">問題集</a>
+</span>
+<br/>
+
 ﻿<h4 id='stream_import' style='color:green;margin-bottom:15px'>整合重點</h4>
 
 - 請先讓Activity繼承[BaseActivity](./activity_setting)<p/>
 <p/>
-
-<span style='font-weight: bold;color:red'>
-註:若您曾使用舊版整合方式，請將I2WAPI.onActivityResume與I2WAPI.onActivityPause移除，讓BaseActivity處理
-</span>
-<br/>
 
 <font size=2 >信息流廣告整合時，須注意以下重點:</font>
 
@@ -652,7 +655,7 @@ public void onDestroy() {
 <p/>
 
 
-
+- 整合完成後，請參考<a target="_blank" href="../checkpoint">檢查要點</a>
 
 [回到頂端](./stream/#stream_import)
 

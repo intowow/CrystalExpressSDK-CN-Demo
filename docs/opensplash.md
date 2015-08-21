@@ -13,13 +13,16 @@
 [程式範例][OpenSplash]
 <p/>
 
-- 讓Activity繼承[BaseActivity](./activity_setting)<p/>
-<p/>
-
 <span style='font-weight: bold;color:red'>
-註:若您曾使用舊版整合方式，請將I2WAPI.onActivityResume與I2WAPI.onActivityPause移除，讓BaseActivity集中處理
+註:
+</span>
+<span style='font-weight: bold;color:red'>
+若整合後看不到廣告，請參考<a target="_blank" href="../faq">問題集</a>
 </span>
 <br/>
+
+- 讓Activity繼承[BaseActivity](./activity_setting)<p/>
+<p/>
 
 - 將Demo app裡的[slide_in_from_bottom.xml][slide_in_from_bottom]與[no_animation.xml][no_animation]，複製到應用程式的res/anim/目錄底下
 
@@ -138,6 +141,8 @@ if (mAd != null) {
 }
 ```
 <p/>
+
+- 整合完成後，請參考<a target="_blank" href="../checkpoint">檢查要點</a>
 
 <span style='font-weight: bold;color:red'>
 註:

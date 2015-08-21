@@ -40,6 +40,8 @@
 
 <p/>
 
+<div id="testmode"></div>
+
 - 若你想使用測試模式取得廣告，可直接修改[BaseActivity][BaseActivity]。
 
 ```java

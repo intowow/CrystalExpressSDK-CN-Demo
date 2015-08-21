@@ -62,7 +62,7 @@
 
 ---------------------------------------
 
-<h4 id='sdk_modify' style='color:green'>SDK更版紀錄</h4>
+<h4 id='sdk_modify' style='color:green'>SDK更版紀錄(<a target="_blank" href="../before#import">下載SDK</a>)</h4>
 
 <table border="1">
 	<thead>
@@ -72,7 +72,15 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td align="center">1.1.41(<a target="_blank" href="../before#import">下載</a>)</td><td align="center">2015/08/14</td>
+			<td align="center">1.1.43</td><td align="center">2015/08/21</td>
+			<td>
+				<ul>
+					<li>更新SDK內部功能</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td align="center">1.1.41</td><td align="center">2015/08/14</td>
 			<td>
 				<ul>
 					<li>更新SDK內部功能</li>

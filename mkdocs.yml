@@ -10,7 +10,6 @@ pages:
 - '廣告版位':
     - '開機蓋屏': 'opensplash.md'
     - '插頁蓋屏': 'interstitial.md'
-    - '翻頁蓋屏': 'flip.md'
     - '信息流廣告': 'stream.md'
     - '內文廣告': 'content.md'
 - '程式碼混淆': 'proguard.md'

@@ -22,7 +22,8 @@
 			</td>
 			<td>
 				<ul>
-					<li>請確認網路狀態，在wifi環境下才會下載視頻廣告</li>
+					<li>若要使用測試模式，請確認在<a target="_blank" href="../activity_setting/#testmode">BaseActivity.java</a>使用I2WAPI.init(context, true)</li>
+					<li>請確認網路狀態，視頻廣告只在wifi環境下才會下載</li>
 					<li>同一隻手機上，不可有相同CrystalId的應用程式並存</li>
 					<li>若操作過程想替換CrystalId，請移除應用程式，設定好AndroidManifest.xml後，再安裝測試</li>
 					<li>若網速較慢，有可能是廣告素材還未下載完成</li>

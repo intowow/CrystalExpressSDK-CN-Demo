@@ -42,7 +42,7 @@
 				內文廣告
 			</td>
 			<td>
-				<a target="_blank" href="../content/#content_life">退出應用程式可正常暫停視頻</a>
+				<a target="_blank" href="../content/#content_life">按HOME退出應用程式後，可正常暫停視頻 ;再進入應用程式後，銀幕上的視頻廣告可再啟動</a>
 			</td>
 		</tr>
 		<tr>
