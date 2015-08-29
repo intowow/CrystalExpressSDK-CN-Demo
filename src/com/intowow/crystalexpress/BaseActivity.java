@@ -18,13 +18,19 @@ public class BaseActivity extends Activity{//XXX#BaseActivity#
 	protected void onCreate(Bundle savedInstanceState) {// XXX
 		super.onCreate(savedInstanceState);
 		
-		//	init the SDK.
+		//	initial the SDK.
+		//	production mode
 		//
 		//I2WAPI.init(this);
 		
     	//	Test Mode
     	//
 		I2WAPI.init(this, true);
+		
+		//	you can launch the BaseApplication.java
+		//	for requesting the enter foreground splash ad
+		//
+		getApplicationContext();
 	}
 	
 	@Override 

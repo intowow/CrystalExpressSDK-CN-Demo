@@ -5,7 +5,7 @@ public class Config {
 	public final static String STREAM_PLACEMENT = "STREAM";
 	
 	public final static String[] STREAM_PLACEMENTS = new String[] {
-		"STREAM","STREAM","STREAM","STREAM","STREAM"};
+		STREAM_PLACEMENT,STREAM_PLACEMENT,STREAM_PLACEMENT,STREAM_PLACEMENT,STREAM_PLACEMENT};
 	
 	public final static String CONTENT_PLACEMENT = "CONTENT";
 	
