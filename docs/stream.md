@@ -391,20 +391,7 @@ pullToRefreshListView
 - 當廣告讀取完成時，SDK會主動呼叫`onADLoaded()`回調，此回調的回傳位置會儲存於`StreamHelper`裡
 - 在`onADLoaded()`回傳位置之前，須先動態地在列表數據(`DataSet`)中分配一個位置給廣告，接者呼叫`adapter.notifyDataSetChanged()`之後，再回傳位置給SDK
 - 若位置回傳`-1`，代表應用程式不需要此廣告
-- 若應用程式使用`StreamHelper`，而不是`DeferStreamAdapter`，請確認設定`onADLoaded()`在`ListView.setAdapter`之前
 
-<span style='font-weight: bold;color:red'>
-註:
-</span>
-<br/>
-<span style='font-weight: bold;color:red'>
-若應用程式使用StreamHelper，而不是DeferStreamAdapter，請確認設定onADLoaded()回調前，adapter已事先設定好數據，
-</span>
-<br/>
-<span style='font-weight: bold;color:red'>
-讓adapter.getCount() > 0
-</span>
-<br/>
 
 [範例程式-StreamHelper][Stream-StreamHelper-onADLoaded]
 <p/>
@@ -455,11 +442,6 @@ public int onADLoaded(int position) {
 ```
 <p/>
 
-
-```
-你必須先設定好onADLoaded()回調，再執行setActive()，
-否則會因為沒有決定廣告安插位置而被SDK釋放掉廣告
-```
 
 [回到頂端](./stream/#stream_import)
 
