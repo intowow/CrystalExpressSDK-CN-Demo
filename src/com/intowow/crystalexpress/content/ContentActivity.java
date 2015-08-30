@@ -1,5 +1,6 @@
 package com.intowow.crystalexpress.content;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
+import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
 import com.intowow.crystalexpress.content.CrystalExpressScrollView.ScrollViewListener;
@@ -191,4 +193,13 @@ public class ContentActivity extends BaseActivity {//XXX#Content-activity#
 		
 	}
 	//end
+	
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent();
+		intent.setClass(this, MainActivity.class);
+		startActivity(intent);
+		
+		finish();
+	}
 }

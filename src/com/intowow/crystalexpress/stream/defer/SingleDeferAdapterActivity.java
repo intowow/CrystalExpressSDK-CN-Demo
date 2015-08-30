@@ -3,6 +3,7 @@ package com.intowow.crystalexpress.stream.defer;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
+import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
 
@@ -181,4 +183,13 @@ public class SingleDeferAdapterActivity extends BaseActivity {//TODO extends Bas
 		
 	}
 	//end
+	
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent();
+		intent.setClass(this, MainActivity.class);
+		startActivity(intent);
+		
+		finish();
+	}
 }

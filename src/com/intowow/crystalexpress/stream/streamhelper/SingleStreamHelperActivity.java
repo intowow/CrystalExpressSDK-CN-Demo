@@ -3,6 +3,7 @@ package com.intowow.crystalexpress.stream.streamhelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.Config;
 import com.intowow.crystalexpress.LayoutManager;
+import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
 import com.intowow.sdk.StreamHelper;
@@ -194,6 +196,15 @@ public class SingleStreamHelperActivity extends BaseActivity {//TODO extends Bas
 	public int getDefaultMinPosition(int position) {
 		// Don't place ad at the first place
 		return Math.max(1, position);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent();
+		intent.setClass(this, MainActivity.class);
+		startActivity(intent);
+		
+		finish();
 	}
 	
 }

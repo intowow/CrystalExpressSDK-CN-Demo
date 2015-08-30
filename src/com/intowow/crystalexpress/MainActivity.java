@@ -40,36 +40,42 @@ public class MainActivity extends BaseActivity {
 		Intent intent = new Intent();
 		intent.setClass(this, SingleDeferAdapterActivity.class);
 		startActivity(intent);
+		finish();
     }
     
     public void onClickStreamMultipleDefer(View view) {
 		Intent intent = new Intent();
 		intent.setClass(this, MultipleDeferAdapterActivity.class);
 		startActivity(intent);
+		finish();
     }
     
     public void onClickSingleStreamHelper(View view) {
 		Intent intent = new Intent();
 		intent.setClass(this, SingleStreamHelperActivity.class);
 		startActivity(intent);
+		finish();
     }
     
     public void onClickMultipStreamHelper(View view) {
 		Intent intent = new Intent();
 		intent.setClass(this, MultipleStreamHelperActivity.class);
 		startActivity(intent);
+		finish();
     }
     
     public void onClickContent(View view) {
 		Intent intent = new Intent();
 		intent.setClass(this, ContentActivity.class);
 		startActivity(intent);
+		finish();
     }
     
     public void onClickFlip(View view) {
 		Intent intent = new Intent();
 		intent.setClass(this, FlipActivity.class);
 		startActivity(intent);
+		finish();
     }
     
 }
