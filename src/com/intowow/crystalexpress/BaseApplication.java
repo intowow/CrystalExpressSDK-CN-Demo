@@ -48,6 +48,7 @@ public class BaseApplication extends Application {
 	private static final String PLACEMENT = "OPEN_SPLASH_FOREGROUND";
 	private SplashAD mEnterForegroundSplashAd = null;
 	
+	//XXX@OpenSplash-FILTER_ACTIVITY_NAMES@#OpenSplash-FILTER_ACTIVITY_NAMES#
 	//	TODO
 	//	you can modify this String array.
 	//	these classes added here will not show 
@@ -74,6 +75,7 @@ public class BaseApplication extends Application {
 		SplashAdActivity.class.getName(),// this is SDK's activity, don't remove it
 		WebViewActivity.class.getName()// this is SDK's activity, don't remove it
 	}; 
+	//end
 	
 	// ===================================
 	// Override Method

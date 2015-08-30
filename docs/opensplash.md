@@ -1,27 +1,35 @@
 <h3 id='opensplash' style='color:red'>開機蓋屏</h3>
 
-- 開機蓋屏廣告指第一次進入應用程式時，所出現的單則或多則蓋屏廣告。
+- 開機蓋屏廣告指進入應用程式時，所出現的蓋屏廣告。
+- 其出現時機包含
+	- 首次啟動應用程式(`launch flow`)
+	- 按`HOME`鍵離開應用程式後，再次開啟應用程式(`enter foreground`)
 
 <img style="display:block; margin:auto;" src="https://s3.cn-north-1.amazonaws.com.cn/intowow-common/preview/img/splash2-demo.png" alt="splash demo" width="250">
 
 <a target="_blank" href="http://s3.cn-north-1.amazonaws.com.cn/intowow-common/preview/globe_slideup.html">效果預覽</a>
 
+---------------------------------------
+
 
 <h4 id='opensplash-1' style='color:green'>整合步驟</h4>
-
-<p/>
-[程式範例][OpenSplash]
-<p/>
 
 <span style='font-weight: bold;color:red'>
 註:
 </span>
+<br/>
 <span style='font-weight: bold;color:red'>
 若整合後看不到廣告，請參考<a target="_blank" href="../faq">問題集</a>
 </span>
 <br/>
 
-- 讓Activity繼承[BaseActivity](./activity_setting)<p/>
+<h3 id='opensplash-launch' style='color:blue'>1.  修改起始流程</h3>
+
+<p/>
+[程式範例][OpenSplash]
+<p/>
+
+- 讓起始Activity繼承[BaseActivity](./activity_setting)<p/>
 <p/>
 
 - 將Demo app裡的[slide_in_from_bottom.xml][slide_in_from_bottom]與[no_animation.xml][no_animation]，複製到應用程式的res/anim/目錄底下
@@ -142,6 +150,102 @@ if (mAd != null) {
 ```
 <p/>
 
+---------------------------------------
+
+<h3 id='opensplash-enterforeground' style='color:blue'>2. 按`HOME`鍵離開應用程式後，再次開啟應用程式(enter foreground)</h3>
+
+<span style='font-weight: bold;color:red'>
+註:
+</span>
+<br/>
+<span style='font-weight: bold;color:red'>
+此部分因為使用Application的ActivityLifecycleCallbacks判斷應用程式的前景與背景，
+</span>
+<br/>
+<span style='font-weight: bold;color:red'>
+所以只支援Android 4.0以上。
+</span>
+<br/>
+<span style='font-weight: bold;color:red'>
+若應用程式已有自己的Application，可改將BaseApplication的邏輯直接加入應用程式的Application裡
+</span>
+<br/>
+
+- 將`BaseApplication.java`加入至程式中
+	- [下載路徑](https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/sample/BaseApplication.java)
+
+- 設定`AndroidManifest.xml`的`application`標籤 ，指定使用`BaseApplication`類別
+
+```xml
+<application
+    android:name="{your BaseApplication package}.BaseApplication"
+    android:XXX
+    android:XXX
+    XXX >
+```
+
+- 設定`AndroidManifest.xml`的`activity`標籤 ，處理橫式蓋屏廣告
+	- 加上`android:configChanges="orientation|screenSize"`
+
+- 修改[BaseActivity.java](./activity_setting)，在`onCreate()`裡啟動`BaseApplication`
+<br/>[程式範例][OpenSplash-startapplication]
+
+<codetag tag="OpenSplash-startapplication" id="OpenSplash-startapplication"/>
+```java
+//	you can launch the BaseApplication.java
+//	for requesting the enter foreground splash ad
+//
+getApplicationContext();
+```
+<p/>
+
+
+- 修改`BaseApplication.java`裡的`FILTER_ACTIVITY_NAMES`字串陣列，此陣列列出`不呼叫`開機蓋屏的`Activity`。
+請填入起始`Activity`，或其他不須呼叫開機蓋屏的`Activity`
+
+<br/>[程式範例][OpenSplash-FILTER_ACTIVITY_NAMES]
+
+<codetag tag="OpenSplash-FILTER_ACTIVITY_NAMES" id="OpenSplash-FILTER_ACTIVITY_NAMES"/>
+```java
+//	TODO
+//	you can modify this String array.
+//	these classes added here will not show 
+//	the enter foreground splash ad
+//
+private final static String[] FILTER_ACTIVITY_NAMES = new String[] {
+
+	//	================================================
+	//	replace these classes to your launcher activity
+	//	or any other class which you don't want to show the splash ad
+	//
+	MainActivity.class.getName(),
+	CEOpenSplashActivity.class.getName(),
+	OpenSplashActivity.class.getName(),
+	MultipleDeferAdapterActivity.class.getName(),
+	SingleDeferAdapterActivity.class.getName(),
+	MultipleStreamHelperActivity.class.getName(),
+	SingleStreamHelperActivity.class.getName(),
+	ContentActivity.class.getName(),
+	FlipActivity.class.getName(),
+
+	//=====  do not remove SDK's activity
+	//
+	SplashAdActivity.class.getName(),// this is SDK's activity, don't remove it
+	WebViewActivity.class.getName()// this is SDK's activity, don't remove it
+}; 
+```
+<p/>
+
+<span style='font-weight: bold;color:red'>
+註:
+</span>
+<br/>
+<span style='font-weight: bold;color:red'>
+請勿移除SDK的SplashAdActivity與WebViewActivity
+</span>
+
+---------------------------------------
+
 - 整合完成後，請參考<a target="_blank" href="../checkpoint">檢查要點</a>
 
 <span style='font-weight: bold;color:red'>
@@ -169,7 +273,8 @@ if (mAd != null) {
 </span>
 <p/>
 
-
+[OpenSplash-startapplication]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/BaseActivity.java#L30 "BaseActivity.java" 
+[OpenSplash-FILTER_ACTIVITY_NAMES]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/BaseApplication.java#L51 "BaseApplication.java" 
 [OpenSplash-mAd]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L25 "CEOpenSplashActivity.java" 
 [OpenSplash]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L14 "CEOpenSplashActivity.java" 
 [slide_in_from_bottom]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/blob/master/res/anim/slide_in_from_bottom.xml

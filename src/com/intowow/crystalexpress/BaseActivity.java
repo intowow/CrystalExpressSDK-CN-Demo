@@ -27,10 +27,12 @@ public class BaseActivity extends Activity{//XXX#BaseActivity#
     	//
 		I2WAPI.init(this, true);
 		
+		//XXX@OpenSplash-startapplication@#OpenSplash-startapplication#
 		//	you can launch the BaseApplication.java
 		//	for requesting the enter foreground splash ad
 		//
 		getApplicationContext();
+		//end
 	}
 	
 	@Override 
