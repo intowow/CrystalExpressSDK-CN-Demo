@@ -2,19 +2,26 @@
 
 - 插頁蓋屏廣告指當用戶從文章內容頁返回至文章清單頁時，出現單則蓋屏廣告。
 
-<p/>
-[程式範例][Interstitial]
-<p/>
+---------------------------------------
 
 <h4 id='interstitialsplash-1' style='color:green'>整合步驟</h4>
 
 <span style='font-weight: bold;color:red'>
 註:
 </span>
+<br/>
+<span style='font-weight: bold;color:red'>
+整合前請先移除手機上的Demo App，一支手機上不可有相同的crystal id。
+</span>
+<br/>
 <span style='font-weight: bold;color:red'>
 若整合後看不到廣告，請參考<a target="_blank" href="../faq">問題集</a>
 </span>
 <br/>
+
+<p/>
+[程式範例][Interstitial]
+<p/>
 
 - 讓Activity繼承[BaseActivity](./activity_setting)<p/>
 <p/>

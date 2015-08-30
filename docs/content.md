@@ -16,6 +16,8 @@
 
 - `ScrollView`布局排列方式，可參考範例程式[activity_content.xml][activity_content.xml]
 
+---------------------------------------
+
 <h4 id='content-1' style='color:red'>串接步驟</h4>
 
 <p/>[程式範例][Content-activity]<p/>
@@ -23,6 +25,11 @@
 <span style='font-weight: bold;color:red'>
 註:
 </span>
+<br/>
+<span style='font-weight: bold;color:red'>
+整合前請先移除手機上的Demo App，一支手機上不可有相同的crystal id。
+</span>
+<br/>
 <span style='font-weight: bold;color:red'>
 若整合後看不到廣告，請參考<a target="_blank" href="../faq">問題集</a>
 </span>
