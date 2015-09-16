@@ -23,44 +23,18 @@
 [程式範例][Interstitial]
 <p/>
 
-- 讓Activity繼承[BaseActivity](./activity_setting)<p/>
+- 讓Activity繼承[BaseActivity](./activity_setting)，BaseActivity內已處理蓋屏廣告大部分邏輯<p/>
 <p/>
 
 - 將Demo app裡的[slide_in_from_bottom.xml][slide_in_from_bottom]與[no_animation.xml][no_animation]，複製到應用程式的res/anim/目錄底下
 
 <p/>
 
-<p/>
-
-- 加入`onConfigurationChanged()`，處理橫式廣告 
-<codetag tag="OpenSplash-onConfigurationChanged" id="OpenSplash-onConfigurationChanged"/>
-```java
-@Override
-public void onConfigurationChanged(Configuration newConfig) {
-	//	you have to add this method in the activity,
-	//	remember to add the android:configChanges="orientation|screenSize" property
-	//	in the Androidanifest.xml
-	super.onConfigurationChanged(newConfig);
-}
-```
-<p/>
-
-
-- 設定AndroidManifest.xml
-	- 在該`Activity`裡加上`android:configChanges="orientation|screenSize"`	
-
-<p/>
-<p/>
-
-<span style='font-weight: bold;color:red'>
-註:若未加上onConfigurationChanged()與android:configChanges，會導致橫式廣告出現錯誤
-<br/>
 
 - 宣告變數([程式範例][Interstitial-init])
 <codetag tag="Interstitial-init"/>
 ```java
 private final static String mInterstitialPlacement = Config.INTERSTITIAL_PLACEMENT;
-private SplashAD mInterstitialSplashAd = null;
 ```
 <p/>
 
@@ -69,41 +43,37 @@ private SplashAD mInterstitialSplashAd = null;
 - 向SDK要求廣告([程式範例][Interstitial-request])
 <codetag tag="Interstitial-request"/>
 ```java
-mInterstitialSplashAd = I2WAPI.requesSplashAD(CEStreamActivity.this, mInterstitialPlacement);
+//	check it for landscape ad case
+//
+if(hasRequestedSplashAd()) {
+	return;
+}
+mSplashAd = I2WAPI.requesSingleOfferAD(CEStreamActivity.this, mInterstitialPlacement);
 ```
 <p/>
 
 - 設定回調([程式範例][Interstitial-setListener])
-- 有別於[開機蓋屏](./opensplash)，呼叫`I2WAPI.requesSplashAD()`後，再設定回調時，線程會以非阻塞模式(`Non-Blocking Calls`)進行
+- 呼叫`I2WAPI.requesSingleOfferAD()`後，再設定回調時，線程會以阻塞模式(`Blocking Calls`)進行
 
 <codetag tag="Interstitial-setListener"/>
 ```java
-if (mInterstitialSplashAd != null) {
-	//	this is a Non-Blocking calls
-	//
-	mInterstitialSplashAd.setListener(new SplashAdListener() {
+if (mSplashAd != null) {
+	mSplashAd.setListener(new SplashAdListener() {
 
 		@Override
 		public void onLoaded() {
-			if(mInterstitialSplashAd != null) {
-				mInterstitialSplashAd.show(R.anim.slide_in_from_bottom, R.anim.no_animation);
-			}
+			mSplashAd.show(R.anim.slide_in_from_bottom, 
+					R.anim.no_animation);
 		}
 
 		@Override
 		public void onLoadFailed() {
-			if(mInterstitialSplashAd != null) {
-				mInterstitialSplashAd.release();
-			}
+			onSplashAdFinish();
 		}
 
 		@Override
 		public void onClosed() {
-			//	be sure to release the splash ad here
-			//
-			if(mInterstitialSplashAd != null) {
-				mInterstitialSplashAd.release();
-			}
+			onSplashAdFinish();
 		}
 	});
 }
@@ -113,20 +83,17 @@ if (mInterstitialSplashAd != null) {
 - 在`onDestroy()`釋放廣告 ([程式範例][Interstitial-release])
 <codetag tag="Interstitial-release"/>
 ```java
-if (mInterstitialSplashAd != null) {
-	mInterstitialSplashAd.release();
-	mInterstitialSplashAd = null;
-}
+releaseSplashAd();
 ```
 <p/>
 
 - 整合完成後，請參考<a target="_blank" href="../checkpoint">檢查要點</a>
 
-[Interstitial-release]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L367 "CEStreamActivity.java" 
-[OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L56 "CEOpenSplashActivity.java" 
-[Interstitial]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L337 "CEStreamActivity.java" 
-[Interstitial-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L84 "CEStreamActivity.java" 
-[Interstitial-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L151 "CEStreamActivity.java" 
-[Interstitial-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L155 "CEStreamActivity.java" 
+[Interstitial-release]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L360 "CEStreamActivity.java" 
+[OpenSplash-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L35 "CEOpenSplashActivity.java" 
+[Interstitial]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L330 "CEStreamActivity.java" 
+[Interstitial-init]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L82 "CEStreamActivity.java" 
+[Interstitial-request]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L148 "CEStreamActivity.java" 
+[Interstitial-setListener]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEStreamActivity.java#L157 "CEStreamActivity.java" 
 [slide_in_from_bottom]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/blob/master/res/anim/slide_in_from_bottom.xml
 [no_animation]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/blob/master/res/anim/no_animation.xml

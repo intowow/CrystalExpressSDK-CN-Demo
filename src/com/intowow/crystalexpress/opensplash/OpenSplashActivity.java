@@ -1,7 +1,6 @@
 package com.intowow.crystalexpress.opensplash;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
@@ -10,7 +9,6 @@ import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.R;
 import com.intowow.sdk.I2WAPI;
-import com.intowow.sdk.SplashAD;
 import com.intowow.sdk.SplashAD.SplashAdListener;
 
 /**
@@ -21,17 +19,8 @@ import com.intowow.sdk.SplashAD.SplashAdListener;
  * */
 public class OpenSplashActivity extends BaseActivity {
 	
-	private SplashAD mAd = null;
 	private Handler mHandler = null;
 	private Class<MainActivity> mMainActivity = MainActivity.class;
-	
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		//	you have to add this method in the activity,
-		//	remember to add the android:configChanges="orientation|screenSize" property
-		//	in the Androidanifest.xml
-		super.onConfigurationChanged(newConfig);
-	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,64 +36,68 @@ public class OpenSplashActivity extends BaseActivity {
 		@Override
 		public void run() {
 			
+			//	check it for landscape ad case
+			//
+			if(hasRequestedSplashAd()) {
+				return;
+			}
 			//	before we start the next activity
 			//	please to request the open splash ad first
 			//	then start the next activity later
 			//
-			if (mAd == null) {
+			//	request the open splash ad
+			//
+			mSplashAd = I2WAPI.requesSingleOfferAD(
+					OpenSplashActivity.this, 
+					"OPEN_SPLASH");
+			
+			if (mSplashAd != null) {
 				
-				//	request the open splash ad
+				//	implement onLoaded, onLoadFailed and 
+				//	onClosed callback
 				//
-				mAd = I2WAPI.requesSingleOfferAD(
-						OpenSplashActivity.this, 
-						"OPEN_SPLASH");
+				mSplashAd.setListener(new SplashAdListener() {
+
+					@Override
+					public void onLoaded() {
+						//	this callback is called 
+						//	when the splash ad is ready to show
+						//
+						//	show splash ad here
+						//
+						mSplashAd.show(
+								R.anim.slide_in_from_bottom, 
+								R.anim.no_animation);
+					}
+
+					@Override
+					public void onLoadFailed() {
+						//	this callback is called
+						//	when this splash ad load fail
+						//
+						onSplashAdFinish();
+						startNextActivity();
+					}
+
+					@Override
+					public void onClosed() {
+						//	this callback is called when:
+						//	1.user click the close button
+						//	2.user press the onBackpress button
+						//	3.dismiss_time setting from the server
+						//
+						onSplashAdFinish();
+						startNextActivity();
+					}
+				});
+			} else {
 				
-				if (mAd != null) {
-					
-					//	implement onLoaded, onLoadFailed and 
-					//	onClosed callback
-					//
-					mAd.setListener(new SplashAdListener() {
-
-						@Override
-						public void onLoaded() {
-							//	this callback is called 
-							//	when the splash ad is ready to show
-							//
-							//	show splash ad here
-							//
-							mAd.show(
-									R.anim.slide_in_from_bottom, 
-									R.anim.no_animation);
-						}
-
-						@Override
-						public void onLoadFailed() {
-							//	this callback is called
-							//	when this splash ad load fail
-							//
-							startNextActivity();
-						}
-
-						@Override
-						public void onClosed() {
-							//	this callback is called when:
-							//	1.user click the close button
-							//	2.user press the onBackpress button
-							//	3.dismiss_time setting from the server
-							//
-							startNextActivity();
-						}
-					});
-				} else {
-					
-					Toast.makeText(
-							OpenSplashActivity.this, 
-							"the ad is not ready now", 
-							Toast.LENGTH_SHORT).show();
-					
-					startNextActivity();
-				}
+				Toast.makeText(
+						OpenSplashActivity.this, 
+						"the ad is not ready now", 
+						Toast.LENGTH_SHORT).show();
+				
+				startNextActivity();
 			}
 		}
 	};
@@ -112,7 +105,6 @@ public class OpenSplashActivity extends BaseActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		
 		//	this sample code lets the user see the LOGO first
 		//	then to request a open splash ad later
 		//
@@ -122,10 +114,15 @@ public class OpenSplashActivity extends BaseActivity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		
 		//	remember to remove the LOGO timer
 		//
 		mHandler.removeCallbacks(mShowLogoRunnable);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		releaseSplashAd();
 	}
 	
 	/**	

@@ -7,7 +7,6 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -44,7 +43,6 @@ import com.intowow.crystalexpress.MainActivity;
 import com.intowow.crystalexpress.R;
 import com.intowow.crystalexpress.stream.defer.ExtendDeferStreamAdapter;
 import com.intowow.sdk.I2WAPI;
-import com.intowow.sdk.SplashAD;
 import com.intowow.sdk.SplashAD.SplashAdListener;
 
 /**
@@ -83,19 +81,9 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 	//
 	//XXX@Interstitial-init@#Interstitial-init#
 	private final static String mInterstitialPlacement = Config.INTERSTITIAL_PLACEMENT;
-	private SplashAD mInterstitialSplashAd = null;
 	//end
 	private boolean mIsNeedLoadInterstitialAd = false;
 	public static final String KEY_LOAD_INTERSTITIAL_AD = "KEY_LOAD_INTERSTITIAL_AD";
-	
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		//	for splash ad,
-		//	you have to add this method in the activity,
-		//	remember to add the android:configChanges="orientation|screenSize" property
-		//	in the Androidanifest.xml
-		super.onConfigurationChanged(newConfig);
-	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,10 +96,10 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		//	you can load the interstitial ad 
 		//
 		Bundle b = null;
-		if(getIntent()!=null){
-			b = this.getIntent().getExtras();
-		}else if(savedInstanceState!=null){
+		if(savedInstanceState!=null){
 			b = savedInstanceState;
+		}else if(getIntent()!=null){
+			b = this.getIntent().getExtras();
 		}
 		
 		mIsNeedLoadInterstitialAd = isNeedLoadInterstitialAd(b);
@@ -119,6 +107,14 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		if(mIsNeedLoadInterstitialAd) {
 			b.remove(KEY_LOAD_INTERSTITIAL_AD);
 		}
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		//	do not request the interstitial ad again
+		//
+		outState.putString(KEY_LOAD_INTERSTITIAL_AD, "N");
+		super.onSaveInstanceState(outState);
 	}
 	
 	private boolean isNeedLoadInterstitialAd(Bundle bundle) {
@@ -148,37 +144,34 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 			public void run() {
 				//	request the interstitial splash ad
 				//
+				
 				//XXX@Interstitial-request@#Interstitial-request#
-				mInterstitialSplashAd = I2WAPI.requesSplashAD(CEStreamActivity.this, mInterstitialPlacement);
+				//	check it for landscape ad case
+				//
+				if(hasRequestedSplashAd()) {
+					return;
+				}
+				mSplashAd = I2WAPI.requesSingleOfferAD(CEStreamActivity.this, mInterstitialPlacement);
 				//end
 				
 				//XXX@Interstitial-setListener@#Interstitial-setListener#
-				if (mInterstitialSplashAd != null) {
-					//	this is a Non-Blocking calls
-					//
-					mInterstitialSplashAd.setListener(new SplashAdListener() {
+				if (mSplashAd != null) {
+					mSplashAd.setListener(new SplashAdListener() {
 
 						@Override
 						public void onLoaded() {
-							if(mInterstitialSplashAd != null) {
-								mInterstitialSplashAd.show(R.anim.slide_in_from_bottom, R.anim.no_animation);
-							}
+							mSplashAd.show(R.anim.slide_in_from_bottom, 
+									R.anim.no_animation);
 						}
 
 						@Override
 						public void onLoadFailed() {
-							if(mInterstitialSplashAd != null) {
-								mInterstitialSplashAd.release();
-							}
+							onSplashAdFinish();
 						}
 
 						@Override
 						public void onClosed() {
-							//	be sure to release the splash ad here
-							//
-							if(mInterstitialSplashAd != null) {
-								mInterstitialSplashAd.release();
-							}
+							onSplashAdFinish();
 						}
 					});
 				}
@@ -344,7 +337,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 			mPagerAdapter.resumeAd();
 		}
 	}
-
+	
 	@Override
 	public void onPause() {
 		super.onPause();
@@ -365,10 +358,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		}
 		
 		//XXX@Interstitial-release@#Interstitial-release#
-		if (mInterstitialSplashAd != null) {
-			mInterstitialSplashAd.release();
-			mInterstitialSplashAd = null;
-		}
+		releaseSplashAd();
 		//end
 
 		if (mPager != null) {

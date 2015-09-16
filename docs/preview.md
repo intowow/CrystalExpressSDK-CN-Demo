@@ -46,5 +46,5 @@
 	- 下載完廣告過程中請不要刷掉或強制停止應用程式
 6. 若要取消預覽模式，需強制停止應用程式
 
-[BaseActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/BaseActivity.java#L12 "BaseActivity.java" 
+[BaseActivity]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/BaseActivity.java#L13 "BaseActivity.java" 
 [TAG-AndroidManifest]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/AndroidManifest.xml "AndroidManifest.xml"

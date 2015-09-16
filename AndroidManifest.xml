@@ -45,13 +45,11 @@
         </activity>
         <activity
             android:name="com.intowow.crystalexpress.cedemo.CEOpenSplashActivity"
-            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="com.intowow.crystalexpress.cedemo.CEStreamActivity"
-            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
@@ -62,7 +60,6 @@
         </activity>
         <activity
             android:name="com.intowow.crystalexpress.opensplash.OpenSplashActivity"
-            android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>

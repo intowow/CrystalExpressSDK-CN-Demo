@@ -3,7 +3,6 @@ package com.intowow.crystalexpress.sectionsplash;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -15,7 +14,6 @@ import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
 import com.intowow.sdk.I2WAPI;
-import com.intowow.sdk.SplashAD;
 import com.intowow.sdk.SplashAD.SplashAdListener;
 
 /**
@@ -28,7 +26,6 @@ public class SectionSplashActivity extends BaseActivity {
 		public void onPageChanged(int pos);
 	}
 	
-	private SplashAD mAd = null;
 	private String mPlacement = Config.SECTION_SPLASH_PLACEMENT;
 	
 	private int						mScrollState = OnScrollListener.SCROLL_STATE_IDLE;
@@ -43,14 +40,6 @@ public class SectionSplashActivity extends BaseActivity {
 	private List<Object> mItems = new ArrayList<Object>(ITEM_SIZE);
 	
 	private int[] mPids = new int[5];
-	
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		//	you have to add this method in your activity which request the splash ad, 
-		//	remember to add the android:configChanges="orientation|screenSize" property
-		//	in the Androidanifest.xml
-		super.onConfigurationChanged(newConfig);
-	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,25 +58,28 @@ public class SectionSplashActivity extends BaseActivity {
 		
 		//	request the section splash ad
 		//
-		mAd = I2WAPI.requesSplashAD(this, mPlacement);
+    	if(hasRequestedSplashAd()) {
+    		mSplashAd = I2WAPI.requesSingleOfferAD(this, mPlacement);
+    	}
 		
-		if (mAd != null) {
-			mAd.setListener(new SplashAdListener() {
+		if (mSplashAd != null) {
+			mSplashAd.setListener(new SplashAdListener() {
 
 				@Override
 				public void onLoaded() {
-					mAd.show(R.anim.slide_in_from_bottom, R.anim.no_animation);
+					mSplashAd.show(R.anim.slide_in_from_bottom, R.anim.no_animation);
 				}
 
 				@Override
 				public void onLoadFailed() {
+					onSplashAdFinish();
 				}
 
 				@Override
 				public void onClosed() {
 					//	be sure to release the splash ad here
 					//
-					mAd.release();
+					onSplashAdFinish();
 				}
 			});
 		}
@@ -97,14 +89,9 @@ public class SectionSplashActivity extends BaseActivity {
 	public void onDestroy() {
 		super.onDestroy();
 		
-		//	release the splash ad in order to avoid the memory leak
-		//
-		if(mAd != null){
-			mAd.release();
-			mAd = null;
-		}
-		
 		mPagerAdapter.release();
+		
+		releaseSplashAd();
 	}
 
 	private void createUI() {
