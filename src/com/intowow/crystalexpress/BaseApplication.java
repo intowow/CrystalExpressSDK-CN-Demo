@@ -216,7 +216,7 @@ public class BaseApplication extends Application {
 									return;
 								}
 								
-								if(requestActivity == null || requestActivity.isDestroyed()) {
+								if(requestActivity == null || requestActivity.isFinishing()) {
 									releaseEnterForegroundSplashAd();
 									return;
 								}
