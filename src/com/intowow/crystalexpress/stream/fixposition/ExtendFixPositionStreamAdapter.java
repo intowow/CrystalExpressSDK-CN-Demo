@@ -1,4 +1,4 @@
-package com.intowow.crystalexpress.stream.streamhelper;
+package com.intowow.crystalexpress.stream.fixposition;
 
 import java.util.List;
 
@@ -8,22 +8,17 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.intowow.crystalexpress.LayoutManager;
-import com.intowow.crystalexpress.R;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
-import com.intowow.sdk.StreamHelper;
+import com.intowow.crystalexpress.R;
+import com.intowow.sdk.FixPositionStreamAdapter;
 
-/**
- *	you can let your adapter (or parent adapter) extend the DeferStreamAdapter,
- * 	
- * */
-public class StreamHelperAdapter extends BaseAdapter {
+public class ExtendFixPositionStreamAdapter extends FixPositionStreamAdapter {//XXX#Stream-DeferStreamAdapter#
 
 	List<Object> mList;
 	Activity mContext;
@@ -34,22 +29,22 @@ public class StreamHelperAdapter extends BaseAdapter {
 	int mStreamListItemPaddingLeftRight = 0;
 	int mStreamListItemHeight = 0;
 	
-	
-	//	TODO
-	//	stream helper
-	private StreamHelper mStreamHelper = null;
-	
-	public StreamHelperAdapter(Activity c, 
-			StreamHelper streamHelper, 
-			List<Object> list){
+	public ExtendFixPositionStreamAdapter(Activity c, 
+			String tagName, 
+			List<Object> list){//XXX#Stream-placement#
 		
-		//	TODO
+		//	set the tag name and the FixPositionStreamAdapter
+		//	will auto create the StreamHelper
 		//
-		mStreamHelper = streamHelper;
+		super(c, tagName);
 		
+		//***********************************************
+		//	common UI
+		//
 		mContext = c;
 		mInflater = LayoutInflater.from(c);
 		mList = list;
+		
 		mPics = new int[5];
 		mPics[0]=R.drawable.business_1;
 		mPics[1]=R.drawable.business_2;
@@ -67,63 +62,41 @@ public class StreamHelperAdapter extends BaseAdapter {
 				lm.getMetric(LayoutID.STREAM_LIST_ITEM_HEIGHT);
 	}
 	
-	//XXX@Stream-StreamHelper-notifyDataSetChanged@#Stream-StreamHelper-notifyDataSetChanged#
-	@Override
-	public void notifyDataSetChanged() {
-		
-		//	TODO
-		//	if your DataSet has been changed
-		//	the SDK will need to re-allocate the ad 
-		//	which you have added in the DataSet before
-		//
-		if(mStreamHelper != null && mList != null) {
-			for (Integer pos : mStreamHelper.getAddedPosition()) {
-				if(pos > mList.size()) {
-					return;
-				}
-				
-				//	check ad case
-				//
-				if(mList.get(pos) == null || mList.get(pos).equals("null")){
-					continue;
-				}
-				
-				mList.add(pos , null);
-			}
-		}
-		
-		super.notifyDataSetChanged();
+	public void setList(List<Object> list) {
+		mList = list;
 	}
-	//end
 
-	//XXX@Stream-StreamHelper-getItemViewType@#Stream-StreamHelper-getItemViewType#
+	//TODO
+/***********************************************************/
+/*	
 	@Override
 	public int getItemViewType(int position) {
-		
-		if(mStreamHelper != null && mStreamHelper.isAd(position)) {
-			return mStreamHelper.getItemViewType(position);
-		}
-		
-		//	return your view type here
-		//
-		//
-		return super.getItemViewType(position);
-		
-	}
-	//end
-	
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {	
-		// Get ad view if possible
-		//XXX@Stream-StreamHelper-getView@#Stream-StreamHelper-getView#
-		View adView =  null;
-		if(mStreamHelper != null) {
-			adView = mStreamHelper.getAD(position);
-			
-			//	or you can resize the ad width by this way
-			//	adView =  mStreamHelper.getAD(position, someIntWidth);
+		//	if you have implemented getItemViewType(), 
+		//	be sure to check if the item is an ad 
+		//	in this position.
+		if(isAd(position)) {
+			return super.getItemViewType(position);
+		}else{
+			//	return your view type here
+			//
 			//
 		}
+	}
+*/
+/***********************************************************/
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		// Get ad view if possible
+		final View adView =  getAD(position);	
+		
+		//	or you can resize the ad width by this way
+		//	final View adView =  getAD(position, someIntWidth);
+		//
+		
+		//	or remove the background
+		//	final View adView =  getAD(position, false);
+		//
 		
 		if(adView != null) {
 			//	you can set the background
@@ -133,7 +106,6 @@ public class StreamHelperAdapter extends BaseAdapter {
 			//	adView.setBackgroundDrawable(your background drawable);
 			return adView;
 		}
-		//end
 				
 		Holder holder = null;
 		View view = convertView;
@@ -199,6 +171,74 @@ public class StreamHelperAdapter extends BaseAdapter {
 	@Override
 	public long getItemId(int position) {
 		return position;
+	}
+
+	/**
+	 * to tell the SDK which position you want to add
+	 * @param targetPosition
+	 * 			the fix position which is configured in server
+	 * @return	the position which is allocated in DataSet. or "-1" means that the ListView do not need any ad. 
+	 * */
+	@Override
+	public int onADLoaded(int targetPosition) {
+		//
+		// 	when one stream ad has been loaded,
+		//	the SDK will need to know which position 
+		//	can show this ad in your DataSet.
+		//	so the SDK will call onADLoaded(position) for getting 
+		//	one position that you have already allocate in your DataSet.
+		//	then, if you call getAD(position) in the getView() later,
+		//	the SDK will return one ad or null refer to onADLoaded's 
+		//	return value.
+		//
+		//	if you return "-1", it means that the ad is not added in your 
+		//	DataSet.
+		
+		//	for example:
+		//	if you return "5" from the onADLoaded(position) first,
+		//	and you request a ad by calling the getAD(5) in the getView() 
+		//	later,
+		//	the SDK will know that this position(5) can response a ad for 
+		//	the App 
+		//	
+		
+		if (mList != null && mList.size() >  targetPosition) {	
+			
+			// just allocate one position for stream ad
+			//
+			mList.add(targetPosition, null);
+			
+			//	be sure to call the notifyDataSetChanged()
+			//
+			notifyDataSetChanged();
+			
+			return targetPosition;
+		}
+		else {				
+			return -1;
+		}
+	}
+	
+	@Override
+	public void notifyDataSetChanged() {
+		//	if your DataSet has been changed
+		//	the SDK will need to re-allocate the ad 
+		//	which you have added in the DataSet before
+		//
+		for (Integer pos : getAddedPosition()) {
+			if(mList == null || pos > mList.size()) {
+				return;
+			}
+			
+			//	check ad case
+			//
+			if(mList.get(pos) == null || mList.get(pos).equals("null")) {
+				continue;
+			}
+			
+			mList.add(pos , null);
+		}
+		super.notifyDataSetChanged();
 	}
 
 }

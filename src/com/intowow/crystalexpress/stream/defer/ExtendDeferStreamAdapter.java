@@ -106,7 +106,6 @@ public class ExtendDeferStreamAdapter extends DeferStreamAdapter {//XXX#Stream-D
 			//	such as
 			//	adView.setBackgroundColor(Color.BLACK);
 			//	adView.setBackgroundResource(your resid);
-			//	adView.setBackground(your background drawable);
 			//	adView.setBackgroundDrawable(your background drawable);
 			return adView;
 		}

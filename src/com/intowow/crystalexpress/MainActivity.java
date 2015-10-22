@@ -10,7 +10,11 @@ import com.intowow.crystalexpress.flip.FlipActivity;
 import com.intowow.crystalexpress.opensplash.OpenSplashActivity;
 import com.intowow.crystalexpress.stream.defer.MultipleDeferAdapterActivity;
 import com.intowow.crystalexpress.stream.defer.SingleDeferAdapterActivity;
+import com.intowow.crystalexpress.stream.fixposition.MultipleFixPositionAdapterActivity;
+import com.intowow.crystalexpress.stream.fixposition.SingleFixPositionAdapterActivity;
+import com.intowow.crystalexpress.stream.streamhelper.MultipleFixPositionStreamHelperActivity;
 import com.intowow.crystalexpress.stream.streamhelper.MultipleStreamHelperActivity;
+import com.intowow.crystalexpress.stream.streamhelper.SingleFixPositionStreamHelperActivity;
 import com.intowow.crystalexpress.stream.streamhelper.SingleStreamHelperActivity;
 
 public class MainActivity extends BaseActivity {
@@ -77,5 +81,34 @@ public class MainActivity extends BaseActivity {
 		startActivity(intent);
 		finish();
     }
+    
+    public void onClickFixSingleStreamHelper(View view) {
+		Intent intent = new Intent();
+		intent.setClass(this, SingleFixPositionStreamHelperActivity.class);
+		startActivity(intent);
+		finish();
+    }
+    
+    public void onClickFixMultipleStreamHelper(View view) {
+		Intent intent = new Intent();
+		intent.setClass(this, MultipleFixPositionStreamHelperActivity.class);
+		startActivity(intent);
+		finish();
+    }
+    
+    public void onClickSingleFixAdapter(View view) {
+		Intent intent = new Intent();
+		intent.setClass(this, SingleFixPositionAdapterActivity.class);
+		startActivity(intent);
+		finish();
+    }
+    
+    public void onClickMultipleFixAdapter(View view) {
+		Intent intent = new Intent();
+		intent.setClass(this, MultipleFixPositionAdapterActivity.class);
+		startActivity(intent);
+		finish();
+    }
+    
     
 }

@@ -64,8 +64,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
             android:onClick="onClickSingleStreamHelper"
-            android:text="Single StreamHelper"
-            android:textSize="20sp" />
+            android:text="Single Defer StreamHelper"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button4"
@@ -76,8 +76,8 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
             android:onClick="onClickMultipStreamHelper"
-            android:text="Multiple StreamHelper"
-            android:textSize="20sp" />
+            android:text="Multiple Defer StreamHelper"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button5"
@@ -87,10 +87,57 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="28dp"
+            android:onClick="onClickFixSingleStreamHelper"
+            android:text="Single Fix Position StreamHelper"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button5"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:onClick="onClickFixMultipleStreamHelper"
+            android:text="Multiple Fix Position StreamHelper"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button6"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:onClick="onClickSingleFixAdapter"
+            android:text="Single Fix Position Adapter"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button7"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
+            android:onClick="onClickMultipleFixAdapter"
+            android:text="Multiple Fix Position Adapter"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button8"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="28dp"
             android:onClick="onClickContent"
             android:text="CONTENT"
             android:textSize="20sp" />
-
     </RelativeLayout>
 
 </ScrollView>

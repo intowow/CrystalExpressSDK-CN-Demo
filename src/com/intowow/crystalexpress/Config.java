@@ -3,9 +3,13 @@ package com.intowow.crystalexpress;
 public class Config {
 	
 	public final static String STREAM_PLACEMENT = "STREAM";
+	public final static String STREAM_TAG_NAME  = "NEWS";
 	
 	public final static String[] STREAM_PLACEMENTS = new String[] {
 		STREAM_PLACEMENT,STREAM_PLACEMENT,STREAM_PLACEMENT,STREAM_PLACEMENT,STREAM_PLACEMENT};
+	
+	public final static String[] STREAM_TAG_NAMES = new String[] {
+		"NEWS","BUSINESS","SPORT","FUTURE","EARTH"};
 	
 	public final static String CONTENT_PLACEMENT = "CONTENT";
 	
