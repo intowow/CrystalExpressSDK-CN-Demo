@@ -43,7 +43,7 @@
 			<a target="_blank" href="https://s3-ap-northeast-1.amazonaws.com/intowow-sdk/android/jar/global/intowowsdk-global.1.4.jar">intowowsdk-global.1.4.jar</a>
 					</li>
 					<li>
-						<a target="_blank" href="https://s3-ap-northeast-1.amazonaws.com/intowow-sdk/android/jar/global/android-support-v4.jar">android-support-v4.jar</a>
+						<a target="_blank" href="https://s3-ap-northeast-1.amazonaws.com/intowow-sdk/android/jar/android-support-v4.jar">android-support-v4.jar</a>
 					</li>
 				</ul>
 				
