@@ -219,6 +219,9 @@ private final static String[] FILTER_ACTIVITY_NAMES = new String[] {
 	SingleStreamHelperActivity.class.getName(),
 	ContentActivity.class.getName(),
 	FlipActivity.class.getName(),
+	SingleFixPositionAdapterActivity.class.getName(),
+	MultipleFixPositionAdapterActivity.class.getName(),
+	SettingActivity.class.getName(),
 
 	//=====  do not remove SDK's activity
 	//
@@ -283,7 +286,7 @@ checkBackground()裡的mActiveReferenceCount會等於0
 
 [OpenSplash-release]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L127 "CEOpenSplashActivity.java" 
 [OpenSplash-startapplication]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/BaseActivity.java#L40 "BaseActivity.java" 
-[OpenSplash-FILTER_ACTIVITY_NAMES]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/BaseApplication.java#L51 "BaseApplication.java" 
+[OpenSplash-FILTER_ACTIVITY_NAMES]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/BaseApplication.java#L54 "BaseApplication.java" 
 [OpenSplash-mAd]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L25 "CEOpenSplashActivity.java" 
 [OpenSplash]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/tree/master/src/com/intowow/crystalexpress/cedemo/CEOpenSplashActivity.java#L19 "CEOpenSplashActivity.java" 
 [slide_in_from_bottom]:https://github.com/ddad-daniel/CrystalExpressSDK-CN-Demo/blob/master/res/anim/slide_in_from_bottom.xml
