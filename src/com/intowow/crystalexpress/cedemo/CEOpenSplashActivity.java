@@ -1,11 +1,18 @@
 package com.intowow.crystalexpress.cedemo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.intowow.crystalexpress.BaseActivity;
 import com.intowow.crystalexpress.R;
+import com.intowow.crystalexpress.setting.SettingConfig;
 import com.intowow.sdk.I2WAPI;
 import com.intowow.sdk.SplashAD.SplashAdListener;
 
@@ -17,12 +24,18 @@ public class CEOpenSplashActivity extends BaseActivity {//XXX#OpenSplash#
 	private Handler mHandler = null;
 	private Class<CEStreamActivity> mNextActivity = CEStreamActivity.class;
 	
+	private SharedPreferences mPreferences = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ce_open_splash);
 		
 		mHandler = new Handler();
+		
+		//	for audience targeting
+		mPreferences = getSharedPreferences(SettingConfig.PREFERENCES_NAME, Context.MODE_PRIVATE);
+		initAudienceTargetingTagList();
 	}
 	
 	private Runnable mShowLogoRunnable = new Runnable() {
@@ -135,6 +148,17 @@ public class CEOpenSplashActivity extends BaseActivity {//XXX#OpenSplash#
 	@Override
 	public void onBackPressed() {
 		startNextActivity();
+	}
+	
+	private void initAudienceTargetingTagList() {
+		List<String> tagList = new ArrayList<String>();
+		
+		if (mPreferences != null) {
+			String tagString = mPreferences.getString(SettingConfig.PREFERENCES_AUDIENCE_TARGETING_TAGS, "");
+			tagList.addAll(Arrays.asList(tagString.split(",")));
+		}
+		
+		I2WAPI.setAudienceTargetingTags(this, tagList);
 	}
 	
 }

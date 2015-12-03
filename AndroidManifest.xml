@@ -114,6 +114,12 @@
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
         <activity
+            android:name="com.intowow.crystalexpress.setting.SettingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+        </activity>
+        
+        <activity
             android:name="com.intowow.sdk.SplashAdActivity"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTask"

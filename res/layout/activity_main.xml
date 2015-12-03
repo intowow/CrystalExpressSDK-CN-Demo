@@ -1,143 +1,187 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff" >
+    android:background="@drawable/bg" >
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_bottom"
+        android:layout_marginTop="70dp" >
 
-        <Button
-            android:id="@+id/cedemo"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickCEDemo"
-            android:text="CrystalExpress APP"
-            android:textSize="16sp" />
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickCEDemo"
+                android:text="CrystalExpress APP"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickOpenSplash"
+                android:text="Open Splash"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickStreamSingleDefer"
+                android:text="Single DeferAdapter"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickStreamMultipleDefer"
+                android:text="Multiple DeferAdapter"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickSingleStreamHelper"
+                android:text="Single Defer StreamHelper"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickMultipStreamHelper"
+                android:text="Multiple Defer StreamHelper"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickFixSingleStreamHelper"
+                android:text="Single Fix Position StreamHelper"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickFixMultipleStreamHelper"
+                android:text="Multiple Fix Position StreamHelper"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickSingleFixAdapter"
+                android:text="Single Fix Position Adapter"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickMultipleFixAdapter"
+                android:text="Multiple Fix Position Adapter"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickContent"
+                android:textColor="@android:color/white"
+                android:text="CONTENT"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+        <ImageView
+            android:id="@+id/btn_setting"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cedemo"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickOpenSplash"
-            android:text="Open Splash"
-            android:textSize="20sp" />
+            android:onClick="onClickSetting"
+            android:src="@drawable/btn_setting_effect" />
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/btn_info"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/button1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickStreamSingleDefer"
-            android:text="Single DeferAdapter"
-            android:textSize="20sp" />
+            android:src="@drawable/btn_info_effect" />
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/button33"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickStreamMultipleDefer"
-            android:text="Multiple DeferAdapter"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button333"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button33"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickSingleStreamHelper"
-            android:text="Single Defer StreamHelper"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button333"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickMultipStreamHelper"
-            android:text="Multiple Defer StreamHelper"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button4"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickFixSingleStreamHelper"
-            android:text="Single Fix Position StreamHelper"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button5"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickFixMultipleStreamHelper"
-            android:text="Multiple Fix Position StreamHelper"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button6"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickSingleFixAdapter"
-            android:text="Single Fix Position Adapter"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button7"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickMultipleFixAdapter"
-            android:text="Multiple Fix Position Adapter"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button8"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="28dp"
-            android:onClick="onClickContent"
-            android:text="CONTENT"
-            android:textSize="20sp" />
-    </RelativeLayout>
-
-</ScrollView>
+</RelativeLayout>

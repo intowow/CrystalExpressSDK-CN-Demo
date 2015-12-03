@@ -217,11 +217,9 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 		// menu
 		//
 		mSections = new ArrayList<String>();
-		mSections.add("menuA");
-		mSections.add("menuB");
-		mSections.add("menuC");
-		mSections.add("menuD");
-		mSections.add("menuE");
+		for(String tag : Config.STREAM_TAG_NAMES) {
+			mSections.add(tag);
+		}
 
 		params = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.MATCH_PARENT,

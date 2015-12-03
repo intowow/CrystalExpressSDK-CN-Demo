@@ -7,4 +7,9 @@
     <dimen name="header_footer_left_right_padding">24dp</dimen>
     <dimen name="header_footer_top_bottom_padding">12dp</dimen>
 
+    <dimen name="marginleft_ad_btn">10dp</dimen>
+    <dimen name="margintop_ad_btn">15dp</dimen>
+    <dimen name="marginright_ad_btn">10dp</dimen>
+    <dimen name="marginbottom_ad_btn">5dp</dimen>
+
 </resources>

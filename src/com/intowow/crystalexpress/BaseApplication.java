@@ -10,8 +10,11 @@ import com.intowow.crystalexpress.cedemo.CEOpenSplashActivity;
 import com.intowow.crystalexpress.content.ContentActivity;
 import com.intowow.crystalexpress.flip.FlipActivity;
 import com.intowow.crystalexpress.opensplash.OpenSplashActivity;
+import com.intowow.crystalexpress.setting.SettingActivity;
 import com.intowow.crystalexpress.stream.defer.MultipleDeferAdapterActivity;
 import com.intowow.crystalexpress.stream.defer.SingleDeferAdapterActivity;
+import com.intowow.crystalexpress.stream.fixposition.MultipleFixPositionAdapterActivity;
+import com.intowow.crystalexpress.stream.fixposition.SingleFixPositionAdapterActivity;
 import com.intowow.crystalexpress.stream.streamhelper.MultipleStreamHelperActivity;
 import com.intowow.crystalexpress.stream.streamhelper.SingleStreamHelperActivity;
 import com.intowow.sdk.I2WAPI;
@@ -69,6 +72,9 @@ public class BaseApplication extends Application {
 		SingleStreamHelperActivity.class.getName(),
 		ContentActivity.class.getName(),
 		FlipActivity.class.getName(),
+		SingleFixPositionAdapterActivity.class.getName(),
+		MultipleFixPositionAdapterActivity.class.getName(),
+		SettingActivity.class.getName(),
 		
 		//=====  do not remove SDK's activity
 		//
