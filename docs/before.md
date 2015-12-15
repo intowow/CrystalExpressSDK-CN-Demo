@@ -26,7 +26,7 @@
 			<td>
 				<ul>
 					<li id="sdklink_cn">
-			<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/cn/intowowsdk-cn.1.5.1.jar">intowowsdk-cn.1.5.1.jar</a>
+			<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/cn/intowowsdk-cn.1.5.2.jar">intowowsdk-cn.1.5.2.jar</a>
 					</li>
 					<li>
 						<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/android-support-v4.jar">android-support-v4.jar</a>
@@ -40,7 +40,7 @@
 			<td>
 				<ul>
 					<li id="sdklink_global">
-			<a target="_blank" href="https://s3-ap-northeast-1.amazonaws.com/intowow-sdk/android/jar/global/intowowsdk-global.1.5.1.jar">intowowsdk-global.1.5.1.jar</a>
+			<a target="_blank" href="https://s3-ap-northeast-1.amazonaws.com/intowow-sdk/android/jar/global/intowowsdk-global.1.5.2.jar">intowowsdk-global.1.5.2.jar</a>
 					</li>
 					<li>
 						<a target="_blank" href="https://s3.cn-north-1.amazonaws.com.cn/intowow-sdk/android/jar/android-support-v4.jar">android-support-v4.jar</a>
