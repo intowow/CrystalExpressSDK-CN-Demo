@@ -623,7 +623,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 				pullToRefreshListView.setBackgroundColor(Color
 						.parseColor("#e7e7e7"));
 				pullToRefreshListView.setLayoutParams(rParams);
-				ListView inner = pullToRefreshListView.getRefreshableView();
+				final ListView inner = pullToRefreshListView.getRefreshableView();
 				inner.setDivider(null);
 				inner.setDividerHeight(0);
 				
@@ -674,7 +674,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 							public void onItemClick(AdapterView<?> parent,
 									View view, int position, long id) {
 								
-								final int FIRST_VISIBLE_ITEM_OFFSET = -1;
+								final int FIRST_VISIBLE_ITEM_OFFSET = inner.getHeaderViewsCount();
 								position = position + FIRST_VISIBLE_ITEM_OFFSET;
 
 								//	you should check is this position is ad first
@@ -726,7 +726,7 @@ public class CEStreamActivity extends BaseActivity {//XXX#Stream-CEStreamActivit
 								// ...
 
 								if (adapter != null) {
-									final int FIRST_VISIBLE_ITEM_OFFSET = -1;
+									final int FIRST_VISIBLE_ITEM_OFFSET = inner.getHeaderViewsCount();
 									// pass the right position on to the SDK
 									//
 									adapter.onScroll(

@@ -266,7 +266,7 @@ mListView.setOnScrollListener(new OnScrollListener() {
 ```
 <p/>
 
-- 若列表使用下拉刷新式功能(`PullToRefreshListView`)，因為此函式庫會在列表第一個位置加上一個`header view`，造成`position`位移一筆，所以需將`onScrollListener()`的`onScroll()`回調的`firstVisibleItem`值減1
+- 若列表使用下拉刷新式功能(`PullToRefreshListView`)，因為此函式庫會在列表第一個位置加上N個`header view`，造成`position`位移N筆，所以需將`onScrollListener()`的`onScroll()`回調的`firstVisibleItem`值減`head view count`
 <br/>
 [範例程式][Stream-Pull-OnScrollListener]
 <codetag tag="Stream-Pull-OnScrollListener"/>
@@ -298,7 +298,7 @@ pullToRefreshListView
 				// ...
 
 				if (adapter != null) {
-					final int FIRST_VISIBLE_ITEM_OFFSET = -1;
+					final int FIRST_VISIBLE_ITEM_OFFSET = inner.getHeaderViewsCount();
 					// pass the right position on to the SDK
 					//
 					adapter.onScroll(
@@ -349,7 +349,7 @@ mListView.setOnItemClickListener(new OnItemClickListener() {
 ```
 <p/>
 
-- 若列表使用下拉刷新式功能(`PullToRefreshListView`)，因為此函式庫會在列表第一個位置加上一個`header view`，造成`position`位移一筆，所以則需將回調帶入的值減1
+- 若列表使用下拉刷新式功能(`PullToRefreshListView`)，因為此函式庫會在列表第一個位置加上N個`header view`，造成`position`位移N筆，所以則需將回調帶入的值減`header view count`
 
 [範例程式][Stream-OnItemClickListener]
 <codetag tag="Stream-OnItemClickListener"/>
@@ -365,7 +365,7 @@ pullToRefreshListView
 			public void onItemClick(AdapterView<?> parent,
 					View view, int position, long id) {
 
-				final int FIRST_VISIBLE_ITEM_OFFSET = -1;
+				final int FIRST_VISIBLE_ITEM_OFFSET = inner.getHeaderViewsCount();
 				position = position + FIRST_VISIBLE_ITEM_OFFSET;
 
 				//	you should check is this position is ad first
