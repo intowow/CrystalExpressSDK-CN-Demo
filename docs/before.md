@@ -8,6 +8,8 @@
 
 - 你應該先定義好廣告版位的名稱，並提交給Intowow後台設定，方可看到廣告
 
+<!--
+
 <h4 id='import' style='color:green'>新增相關函式庫</h4>
 
 - 請將下列函式庫加入到應用程式的src/libs目錄裡
@@ -98,10 +100,7 @@
 </table>
 <p/>
 
-
-
-<br/>
-
+-->
 
 <h4 id='import' style='color:green'>需求與限制</h4>
 - SDK最低支援Android 2.2以上的手機
