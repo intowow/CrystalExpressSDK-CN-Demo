@@ -298,7 +298,7 @@ pullToRefreshListView
 				// ...
 
 				if (adapter != null) {
-					final int FIRST_VISIBLE_ITEM_OFFSET = inner.getHeaderViewsCount();
+					final int FIRST_VISIBLE_ITEM_OFFSET = -inner.getHeaderViewsCount();
 					// pass the right position on to the SDK
 					//
 					adapter.onScroll(
@@ -365,7 +365,7 @@ pullToRefreshListView
 			public void onItemClick(AdapterView<?> parent,
 					View view, int position, long id) {
 
-				final int FIRST_VISIBLE_ITEM_OFFSET = inner.getHeaderViewsCount();
+				final int FIRST_VISIBLE_ITEM_OFFSET = -inner.getHeaderViewsCount();
 				position = position + FIRST_VISIBLE_ITEM_OFFSET;
 
 				//	you should check is this position is ad first

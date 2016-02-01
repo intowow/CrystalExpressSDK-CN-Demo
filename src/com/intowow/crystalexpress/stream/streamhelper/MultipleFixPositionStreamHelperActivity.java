@@ -584,7 +584,7 @@ public class MultipleFixPositionStreamHelperActivity extends BaseActivity{
 							public void onItemClick(AdapterView<?> parent,
 									View view, int position, long id) {
 								
-								final int FIRST_VISIBLE_ITEM_OFFSET = inner.getHeaderViewsCount();
+								final int FIRST_VISIBLE_ITEM_OFFSET = -inner.getHeaderViewsCount();
 								position = position + FIRST_VISIBLE_ITEM_OFFSET;
 
 								//	you should check is this position is ad first
@@ -631,7 +631,7 @@ public class MultipleFixPositionStreamHelperActivity extends BaseActivity{
 								if (helper != null) {
 									// pass the right position on to the SDK
 									//
-									final int FIRST_VISIBLE_ITEM_OFFSET = inner.getHeaderViewsCount();
+									final int FIRST_VISIBLE_ITEM_OFFSET = -inner.getHeaderViewsCount();
 									
 									helper.onScroll(
 											view,
