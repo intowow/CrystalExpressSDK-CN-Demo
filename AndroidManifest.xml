@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SET_ORIENTATION" />
 
-    <application
+    <application 
         android:name="com.intowow.crystalexpress.BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -118,7 +118,11 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
         </activity>
-        
+        <activity android:name="com.intowow.crystalexpress.nativead.NativeActivity" />
+        <activity
+            android:name="com.intowow.crystalexpress.displayad.DisplayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
         <activity
             android:name="com.intowow.sdk.SplashAdActivity"
             android:configChanges="orientation|screenSize"
@@ -141,6 +145,10 @@
         <meta-data
             android:name="CRYSTAL_ID"
             android:value="crystalidforandroidtestdontuseit" />
+        
+        <!-- 
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+         -->
     </application>
 
 </manifest>

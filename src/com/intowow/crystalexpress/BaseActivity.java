@@ -15,8 +15,8 @@ public class BaseActivity extends Activity{//XXX#BaseActivity#
 	private final static String KEY_HAS_SPLASH_AD = "KEY_HAS_SPLASH_AD";
 	
 	
-	private boolean mHasResume = false;
-	private boolean mHasPause = false;
+	protected boolean mHasResume = false;
+	protected boolean mHasPause = false;
 	
 	//	for splash ad
 	//

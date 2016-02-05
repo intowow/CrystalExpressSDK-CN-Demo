@@ -74,7 +74,9 @@
 ##################################
 #	sdk
 #
--keep class com.intowow.sdk* { *; }
+-keepnames class com.intowow.sdk.*
+-keep class com.intowow.sdk.* { public *; }
+-keepclassmembers class com.intowow.sdk.* { public *; }
 ##################################
 #	android-support-v4
 #
