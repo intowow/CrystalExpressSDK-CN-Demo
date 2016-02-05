@@ -6,7 +6,8 @@ import android.view.View;
 
 import com.intowow.crystalexpress.cedemo.CEOpenSplashActivity;
 import com.intowow.crystalexpress.content.ContentActivity;
-import com.intowow.crystalexpress.flip.FlipActivity;
+import com.intowow.crystalexpress.displayad.DisplayActivity;
+import com.intowow.crystalexpress.nativead.NativeActivity;
 import com.intowow.crystalexpress.opensplash.OpenSplashActivity;
 import com.intowow.crystalexpress.setting.SettingActivity;
 import com.intowow.crystalexpress.stream.defer.MultipleDeferAdapterActivity;
@@ -37,6 +38,20 @@ public class MainActivity extends BaseActivity {
     public void onClickOpenSplash(View view) {
 		Intent intent = new Intent();
 		intent.setClass(this, OpenSplashActivity.class);
+		startActivity(intent);
+		finish();
+    }
+    
+    public void onClickNativeAd(View view) {
+		Intent intent = new Intent();
+		intent.setClass(this, NativeActivity.class);
+		startActivity(intent);
+		finish();
+    }
+    
+    public void onClickDisplayAd(View view) {
+		Intent intent = new Intent();
+		intent.setClass(this, DisplayActivity.class);
 		startActivity(intent);
 		finish();
     }
@@ -72,13 +87,6 @@ public class MainActivity extends BaseActivity {
     public void onClickContent(View view) {
 		Intent intent = new Intent();
 		intent.setClass(this, ContentActivity.class);
-		startActivity(intent);
-		finish();
-    }
-    
-    public void onClickFlip(View view) {
-		Intent intent = new Intent();
-		intent.setClass(this, FlipActivity.class);
 		startActivity(intent);
 		finish();
     }

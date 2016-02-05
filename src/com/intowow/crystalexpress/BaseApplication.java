@@ -8,7 +8,6 @@ import android.os.Handler;
 
 import com.intowow.crystalexpress.cedemo.CEOpenSplashActivity;
 import com.intowow.crystalexpress.content.ContentActivity;
-import com.intowow.crystalexpress.flip.FlipActivity;
 import com.intowow.crystalexpress.opensplash.OpenSplashActivity;
 import com.intowow.crystalexpress.setting.SettingActivity;
 import com.intowow.crystalexpress.stream.defer.MultipleDeferAdapterActivity;
@@ -71,7 +70,6 @@ public class BaseApplication extends Application {
 		MultipleStreamHelperActivity.class.getName(),
 		SingleStreamHelperActivity.class.getName(),
 		ContentActivity.class.getName(),
-		FlipActivity.class.getName(),
 		SingleFixPositionAdapterActivity.class.getName(),
 		MultipleFixPositionAdapterActivity.class.getName(),
 		SettingActivity.class.getName(),

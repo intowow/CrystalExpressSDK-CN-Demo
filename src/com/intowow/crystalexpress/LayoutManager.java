@@ -24,8 +24,8 @@ public class LayoutManager {
 	/// Member fields
 	private LayoutRatio mRatio 		    = DEFAULT_LAYOUT_RATIO;
 	private float		mLogicalDensity = DEFAULT_LOGICAL_DENSITY;
-	private int		    mScreenWidth	= DEFAULT_SCREEN_WIDTH;
-	private int		 	mScreenHeight   = DEFAULT_SCREEN_HEIGHT;
+	public int		    mScreenWidth	= DEFAULT_SCREEN_WIDTH;
+	public int		 	mScreenHeight   = DEFAULT_SCREEN_HEIGHT;
 	private double		mScalingRatio 	= DEFAULT_SCALING_RATIO;;
 	private int[]		mLayoutMetrics  = null;
 	
@@ -71,6 +71,25 @@ public class LayoutManager {
 		
 		STREAM_MENU_BOTTOM_LINE_HEIGHT,//2
 		
+		AD_BG_HEIGHT, // 560
+		AD_CARD_MARGIN, // 30
+		AD_MARGIN, // 15
+		AD_ICON_SIZE, // 80
+		AD_TITLE_MERGIN, // 20
+		AD_TITLE_WIDTH, // 370
+		AD_TITLE_HEIGHT, // 80
+		AD_TITLE_TEXT_SIZE, // 28
+		AD_CALL_TO_ACTION_WIDTH, // 140
+		AD_CALL_TO_ACTION_HEIGHT, // 60
+		AD_CALL_TO_ACTION_MARGIN_TOP, // 30
+		AD_CALL_TO_ACTION_TEXT_SIZE, // 24
+		AD_VIDEO_HEIGHT, // 354
+		AD_BODY_WIDTH, // 640
+		AD_BODY_TEXT_SIZE, // 24
+		
+		DISPLAY_AD_TOP_IMG_HEIGHT, // 1401
+		DISPLAY_AD_BOTTOM_IMG_HEIGHT, // 315
+		DISPLAY_AD_MARGIN, //20
 	}	
 	
 	/**
@@ -99,6 +118,26 @@ public class LayoutManager {
 		sm(LayoutID.CONTENT_TEXT_LINE_SPACING, 16);
 		
 		sm(LayoutID.STREAM_MENU_BOTTOM_LINE_HEIGHT,2);
+		
+		sm(LayoutID.AD_BG_HEIGHT, 560);
+		sm(LayoutID.AD_CARD_MARGIN, 30);
+		sm(LayoutID.AD_MARGIN, 15);
+		sm(LayoutID.AD_ICON_SIZE, 80);
+		sm(LayoutID.AD_TITLE_MERGIN, 20);
+		sm(LayoutID.AD_TITLE_WIDTH, 370);
+		sm(LayoutID.AD_TITLE_HEIGHT, 80);
+		sm(LayoutID.AD_TITLE_TEXT_SIZE, 28);
+		sm(LayoutID.AD_CALL_TO_ACTION_WIDTH, 140);
+		sm(LayoutID.AD_CALL_TO_ACTION_HEIGHT, 60);
+		sm(LayoutID.AD_CALL_TO_ACTION_MARGIN_TOP, 30);
+		sm(LayoutID.AD_CALL_TO_ACTION_TEXT_SIZE, 24);
+		sm(LayoutID.AD_VIDEO_HEIGHT, 354);
+		sm(LayoutID.AD_BODY_WIDTH, 640);
+		sm(LayoutID.AD_BODY_TEXT_SIZE, 24);
+		
+		sm(LayoutID.DISPLAY_AD_TOP_IMG_HEIGHT, 1401);
+		sm(LayoutID.DISPLAY_AD_BOTTOM_IMG_HEIGHT, 315);
+		sm(LayoutID.DISPLAY_AD_MARGIN, 70);
 	}
 	
 	private void updateLayout() {
@@ -124,6 +163,26 @@ public class LayoutManager {
 		ts(LayoutID.STREAM_MENU_TEXT_SIZE);
 		
 		as(LayoutID.STREAM_MENU_BOTTOM_LINE_HEIGHT);
+		
+		as(LayoutID.AD_BG_HEIGHT);
+		as(LayoutID.AD_CARD_MARGIN);
+		as(LayoutID.AD_MARGIN);
+		as(LayoutID.AD_ICON_SIZE);
+		as(LayoutID.AD_TITLE_MERGIN);
+		as(LayoutID.AD_TITLE_WIDTH);
+		as(LayoutID.AD_TITLE_HEIGHT);
+		ts(LayoutID.AD_TITLE_TEXT_SIZE);
+		as(LayoutID.AD_CALL_TO_ACTION_WIDTH);
+		as(LayoutID.AD_CALL_TO_ACTION_HEIGHT);
+		as(LayoutID.AD_CALL_TO_ACTION_MARGIN_TOP);
+		as(LayoutID.AD_CALL_TO_ACTION_TEXT_SIZE);
+		as(LayoutID.AD_VIDEO_HEIGHT);
+		as(LayoutID.AD_BODY_WIDTH);
+		ts(LayoutID.AD_BODY_TEXT_SIZE);
+		
+		as(LayoutID.DISPLAY_AD_TOP_IMG_HEIGHT);
+		as(LayoutID.DISPLAY_AD_BOTTOM_IMG_HEIGHT);
+		as(LayoutID.DISPLAY_AD_MARGIN);
 	}
 	
 	public void init(float density, int width, int height) {

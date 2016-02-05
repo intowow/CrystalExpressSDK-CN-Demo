@@ -16,6 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -627,7 +628,6 @@ public class MultipleFixPositionStreamHelperActivity extends BaseActivity{
 								// if you have already implemented this listener,
 								// add your original code here
 								// ...
-
 								if (helper != null) {
 									// pass the right position on to the SDK
 									//

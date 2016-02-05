@@ -20,7 +20,6 @@ import com.intowow.crystalexpress.LayoutManager;
 import com.intowow.crystalexpress.LayoutManager.LayoutID;
 import com.intowow.crystalexpress.R;
 import com.intowow.crystalexpress.cedemo.adapter.ContentPagerAdapter;
-import com.intowow.sdk.FlipADDeferHelper;
 
 /**
  * to let the SDK know the App status. (foreground or background)
@@ -45,9 +44,7 @@ public class CEContentActivity extends BaseActivity {
 	//************************************************
 	//	content and flip ad
 	//
-	private final static String mFlipPlacement = Config.FLIP_PLACEMENT;
 	private final static String mContentPlacement = Config.CONTENT_PLACEMENT;
-	private FlipADDeferHelper mFlipHelper = null;
 	private ContentPagerAdapter 	mPagerAdapter;
 
 	@Override
@@ -121,12 +118,9 @@ public class CEContentActivity extends BaseActivity {
 
 		});
 		
-		mFlipHelper = new FlipADDeferHelper(this, mFlipPlacement);
-		
 		mPagerAdapter = new ContentPagerAdapter(
 				this, 
 				mItems, 
-				mFlipHelper,
 				mContentPlacement);
 		
 		//	pager
@@ -152,7 +146,6 @@ public class CEContentActivity extends BaseActivity {
 	public void onResume() {
 		super.onResume();
 		
-		mFlipHelper.onStart();
 		mPagerAdapter.onStart();
 	}
 
@@ -160,7 +153,6 @@ public class CEContentActivity extends BaseActivity {
 	public void onPause() {
 		super.onPause();
 
-		mFlipHelper.onStop();
 		mPagerAdapter.onStop();
 	}
 
@@ -168,11 +160,7 @@ public class CEContentActivity extends BaseActivity {
 	public void onDestroy() {
 		super.onDestroy();
 
-		mFlipHelper.destroy();
-		mFlipHelper = null;
-		
 		mPagerAdapter.destroy();
-		mFlipHelper = null;
 	}
 	
 	@Override

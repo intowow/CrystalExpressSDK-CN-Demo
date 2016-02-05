@@ -49,6 +49,32 @@
                 android:layout_marginRight="@dimen/marginright_ad_btn"
                 android:layout_marginTop="@dimen/margintop_ad_btn"
                 android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickNativeAd"
+                android:text="Native Ad"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+            
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
+                android:onClick="onClickDisplayAd"
+                android:text="Display Ad"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+                        
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/marginbottom_ad_btn"
+                android:layout_marginLeft="@dimen/marginleft_ad_btn"
+                android:layout_marginRight="@dimen/marginright_ad_btn"
+                android:layout_marginTop="@dimen/margintop_ad_btn"
+                android:background="@drawable/btn_ad_effect"
                 android:onClick="onClickStreamSingleDefer"
                 android:text="Single DeferAdapter"
                 android:textColor="@android:color/white"

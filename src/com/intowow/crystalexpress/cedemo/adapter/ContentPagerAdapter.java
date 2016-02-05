@@ -25,8 +25,6 @@ import com.intowow.crystalexpress.R;
 import com.intowow.crystalexpress.content.ContentHelper;
 import com.intowow.crystalexpress.content.CrystalExpressScrollView;
 import com.intowow.crystalexpress.content.CrystalExpressScrollView.ScrollViewListener;
-import com.intowow.sdk.FlipADDeferHelper;
-import com.intowow.sdk.FlipADDeferHelper.AppADListener;
 
 public class ContentPagerAdapter extends PagerAdapter implements OnPageChangeListener {
 	
@@ -45,53 +43,22 @@ public class ContentPagerAdapter extends PagerAdapter implements OnPageChangeLis
 	//	content and flip ad
 	//
 	private String mContentPlacement;
-	private FlipADDeferHelper mFlipHelper;
 	/**every page has one ContentHelper*/
 	private SparseArray<ContentHelper> mContentHelper;
 	
 	public ContentPagerAdapter(
 			Context c, 
 			List<Object> newsList,
-			FlipADDeferHelper helper,
 			String contentPlacement)
 	{
 		mContext = c;
 		this.mNewsList = newsList;				
 		canvasList = new SparseArray<LinearLayout>();
 		
-		//	ad setting
-		//
-		mFlipHelper = helper;	
-		
 		//	every page has one content helper
 		//
 		mContentHelper = new SparseArray<ContentHelper>();
 		mContentPlacement = contentPlacement;
-		
-		//	you should set the lister to tell the SDK
-		//	which position(page) you want to add when the flip ad is loaded.
-		//	if you return -1, then it means there is no need to add the flip ad
-		//
-		mFlipHelper.setAppADListener(new AppADListener() {
-
-			@Override
-			public int onADLoaded(int position) {
-				// Don't place ad at the first page
-				position = Math.max(1, position);
-				
-				if (mNewsList.size() >=  position) {
-					mNewsList.add(position, null);
-					notifyDataSetChanged();
-					return position;
-				}
-				else {
-					//	return -1
-					//	
-					return -1;
-				}
-			}
-			
-		});
 	}
 	
 	public Object instantiateItem(View collection, final int position) {//XXX
@@ -102,10 +69,6 @@ public class ContentPagerAdapter extends PagerAdapter implements OnPageChangeLis
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 					LinearLayout.LayoutParams.MATCH_PARENT,
 					LinearLayout.LayoutParams.MATCH_PARENT);
-			
-			//	get flip
-			//
-			canvas = mFlipHelper.getAD(position);
 			
 			if(canvas == null){
 				//	use content ad
@@ -255,9 +218,6 @@ public class ContentPagerAdapter extends PagerAdapter implements OnPageChangeLis
 
 	@Override
 	public void onPageScrollStateChanged(int state) {
-		if (mFlipHelper != null) {
-			mFlipHelper.onPageScrollStateChanged(state);
-		}
 	}
 
 	@Override
@@ -277,10 +237,6 @@ public class ContentPagerAdapter extends PagerAdapter implements OnPageChangeLis
 		}
 		
 		mCurrentPosition = position;
-		
-		if (mFlipHelper != null) {
-			mFlipHelper.onPageSelected(mCurrentPosition);
-		}
 		
 		if (mContentHelper != null) {
 			ContentHelper helper = mContentHelper.get(mCurrentPosition);
@@ -324,10 +280,6 @@ public class ContentPagerAdapter extends PagerAdapter implements OnPageChangeLis
 	
 	public void destroy() {
 		mContext = null;
-		if(mFlipHelper != null){
-			mFlipHelper.destroy();
-			mFlipHelper = null;
-		}
 		if(mContentHelper != null){
 			for(int i = 0 ; i < mContentHelper.size() ; i++) {
 				mContentHelper.get(mContentHelper.keyAt(i)).destroy();
